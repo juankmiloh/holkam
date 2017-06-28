@@ -1,0 +1,121 @@
+.pie{
+	box-shadow: 0px -3px 3px #B3AEAE;
+}
+
+@media screen and (max-width: 991px){
+	.hide-mapa{
+		display: block !important; 
+	}
+
+	.show-mapa{
+		display: none !important;
+	}
+
+}
+@media screen and (min-width: 992px){
+	.show-mapa{
+		display: block !important;
+	}
+
+	.hide-mapa{
+		display: none !important;
+	}
+}
+
+@media screen and (max-width: 480px){
+	.texto-footer{
+		color: black;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 97%;
+		font-weight: bold;
+	}
+	.texto-footer1{
+		color: black;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 90%;
+		font-weight: normal;
+	}
+}
+
+.barras-negras{
+	height: 1px;
+	border: 0;
+	color: black;
+	background-color: black;
+}
+
+
+#nav-mapa a{
+	color: white;
+	text-align: center;
+
+}
+
+#nav-mapa{
+	border: 0px;
+	background-color: black;
+	opacity: 0.9;
+	font-size: 10;
+}
+
+#nav-mapa1 a{
+	text-align: center;
+	/*color: white;*/
+
+}
+
+#nav-mapa-blanco{
+	background-color: white;
+	border: 0px;
+	font-size: 10;
+}
+
+#nav-mapa-blanco a{
+	color: black;
+	text-align: center;
+
+}
+
+/*Opciones para la animación de los botones de las redes sociales*/
+
+.contenedor-redes img{
+	height: 25px;
+	width: 25px;
+	
+}
+
+.contenedor-redes{
+    height: 30px;
+}
+
+.contenedor-redes img:hover{
+	transform : scale(1.2);	
+    -moz-transform : scale(1.2);      /* Firefox */
+    -webkit-transform : scale(1.2);   /* Chrome - Safari */
+    -o-transform : scale(1.2);        /* Opera */
+    transition: width 0.1s, height 0.1s, transform 0.1s;
+    -moz-transition: width 0.1s, height 0.1s, -moz-transform 0.1s;
+    -webkit-transition: width 0.1s, height 0.1s, -webkit-transform 0.1s;
+    -o-transition: width 0.1s, height 0.1s,-o-transform 0.1s;
+    cursor: pointer;
+}
+
+.texto-holkam{
+    color: white; 
+    font-weight: bold;
+}
+
+.texto-footer{
+	color: black;
+	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 150%;
+	font-weight: normal;
+}
+.texto-footer1{
+	color: black;
+	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 120%;
+	font-weight: normal;
+}
+
+

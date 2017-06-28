@@ -1,0 +1,167 @@
+/*Opciones para todos los tamaños de pantallas------------------------------------------------------------------*/
+body{
+	/*Comandos para el fondo del home*/
+	background-image: url("../images/FondoOpacidad.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-color:#464646;
+
+	/*comandos para que no se pueda seleccionar el texto*/
+	-webkit-user-select: none; 
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	height: 70%;
+}
+
+
+
+.contenedor-titulo{
+	/*width: 616px;*/
+	height: 150px;
+	background-image: url("../images/Logotipo-Holkam.png");
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+
+.opcion1{
+		background-image: url("../images/Impresion-Icono.png");
+		background-repeat: no-repeat;
+}
+
+.opcion2{
+	background-image: url("../images/Icono-tendencias.png");
+	background-repeat: no-repeat;	
+}
+
+.opcion3{
+	background-image: url("../images/Icono-Juego.png");
+	background-repeat: no-repeat;	
+}
+
+.opcion4{
+	background-image: url("../images/Icono-Software.png");
+	background-repeat: no-repeat;	
+}
+
+.opcion5{
+	background-image: url("../images/somos-icono.png");
+	background-repeat: no-repeat;	
+}
+
+
+.cuerpo{
+	width: 100%;
+}
+
+
+/*Efectos para las opciones al cruzar el ratón por encima*/
+.contenedor-imagen:hover{
+	-webkit-transform: scale(1.04);
+    -moz-transform: scale(1.04);
+    -o-transform: scale(1.04);
+    -ms-transform: scale(1.04);
+    transform: scale(1.04);
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    opacity: 100;
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------*/
+
+
+
+/* Opciones exclusivas para pantallas inferiores a 768 px ---------------------------------------------- */
+
+
+
+/* Color del título, tamaño y tipo de letra */
+
+
+
+.contenedor-imagen{
+	width: 100px;
+	height: 100px;
+	opacity: 0.8;
+}
+
+.texto-opcion{
+	color: white;
+	font: 100% Corbel;
+	cursor: pointer;
+	width: 100%;
+	height: auto;
+}
+
+.texto-opcion:hover{
+	/*Efectos para cuando se pase el ratón sobre cada texto de opción*/
+	font: bold 100% Corbel;	
+	-webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+}
+
+/* Estilito para hacer que la imagen sea responsive*/
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+
+/* Opciones exclusivas para pantallas de tamaño superior a 768 pixeles  ---------------------------------------*/
+@media screen and (min-width: 768px) {
+
+	
+	header{
+		height: 20%;	/*El header se la da 20% para separarlo de la parte superior*/
+	}  
+
+	.texto-opcion{
+		font: 120% Corbel; /*Tamaño texto de las opciones*/
+	}  
+
+	
+	.cuerpo{
+		width: 70%;
+	}
+
+	
+	.texto-opcion:hover{
+		/*Efectos para cuando se pase el ratón sobre cada texto de opción*/
+		font: bold 120% Corbel;	
+	}
+
+	
+}
+
+/*-----------------------------------------------------------------------------------------------------------------*/
+
+
+@media screen and (max-width: 991px){
+
+	.cuerpo{
+		width: 85%;
+	}
+}
+
+
+
+@media screen and (max-width: 768px){
+	.cuerpo{
+		width: 100%;
+	}
+
+	.contenedor-titulo{
+		/*width: 616px;*/
+		height: 130px;
+		background-image: url("../images/Logotipo-Holkam-sm.png");
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+}
+/*------------------------------------------------------------------------------------------------------------------------------*/
+

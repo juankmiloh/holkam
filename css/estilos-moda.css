@@ -1,0 +1,701 @@
+ /*------------------------------------------------------------------------------------*/
+
+/*Opciones para la imagen de fondo de la barra de navegación*/
+
+
+.cuerpo{
+	
+}
+
+
+
+.texto-opcion{
+	color: #fff;
+	height: 18%;
+	width: 80%;
+	position: absolute;
+	bottom:-5px;
+	left: 10%;
+	font-size: 15;
+}
+
+.texto-opcion1{
+	color: #fff;
+	height: 18%;
+	width: 80%;
+	position: absolute;
+	bottom:-5px;
+	left: 10%;
+	font-size: 13;
+}
+
+/*Opciones para el contenedor de imágenes*/
+.contenedor-imagen{
+	margin-top: 45px;	
+	width: 103%;
+	height: 100%;
+	background-image: url("../images/Tendecias Moda.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	text-align: right;
+	max-height: 449px;
+	min-height: 255px;
+}
+
+.contenedor-impresion{
+	left: -10px;
+	margin-top: 45px;	
+	width: 102%;
+	height: 100%;
+	background-image: url("../images/impresion-principal.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	text-align: right;
+	max-height: 449px;
+	min-height: 255px;
+}
+
+.contenedor-impresion-1{
+	left: -10px;
+	margin-top: 45px;	
+	width: 102%;
+	height: 100%;
+	background-image: url("../images/impresion-1.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	text-align: right;
+	max-height: 449px;
+	min-height: 255px;
+}
+
+.contenedor-medio{
+	max-height: 630px;
+}
+
+
+
+
+
+.contenedor1{
+	
+	background-image: url("../images/Mujer.jpg");
+	background-repeat: no-repeat;
+	background-size: 95% 95%;	
+	background-position: center;
+	min-height: 630px;
+	max-height: 630px;
+}
+
+.contenedor2{
+		
+	background-image: url("../images/Modelo.jpg");
+	background-repeat: no-repeat;
+	background-size: 90% 90%;	
+	background-position: center;
+	min-height: 315px;
+	max-height: 315px;
+}
+
+.contenedor3{
+	
+	background-image: url("../images/Corbata.jpg");
+	background-repeat: no-repeat;
+	background-size: 90% 90%;	
+	background-position: center;
+	min-height: 315px;
+	max-height: 315px;
+}
+
+.barras{
+	height: 1px;
+	background-color: black;
+	width: 50%;
+}
+
+.contenedor-inferior{
+	width: 100%;
+}  
+
+
+.contenedores-imagen:hover{
+	-webkit-transform: scale(1.07);
+    -moz-transform: scale(1.07);
+    -o-transform: scale(1.07);
+    -ms-transform: scale(1.07);
+    transform: scale(1.07);
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.divprueba{
+	border: 1px solid;
+	border-color: blue;
+}
+
+.color-texto-mapa{
+	color: black;
+}
+
+#nav-mapa a{
+	color: black;
+}
+
+.texto-footer{
+	color: black;
+	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 150%;
+	font-weight: normal;
+}
+.texto-footer1{
+	color: black;
+	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 120%;
+	font-weight: normal;
+}
+
+
+
+
+
+/*--------------------------------------------------------------------------*/
+/*Opciones para el texto y tamaño límite de la imagen principal---------------------------------------*/
+
+.texto-tendencias{
+	text-align: right;
+	color: black;
+	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 650%;
+	font-weight: bold;
+}
+
+.texto-impresion-p{
+	text-align: right;
+	color: white;
+	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 650%;
+	font-weight: bold;
+}
+
+.texto-moda{
+	text-align: right;
+	color: black;
+	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 600%;
+	font-weight: normal;
+	margin-top: -40px;
+}
+
+.texto-demanda-p{
+	text-align: right;
+	color: white;
+	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 600%;
+	font-weight: normal;
+	margin-top: -40px;
+}
+
+/*-----textos de las imagenes-----*/
+
+.texto-conceptos{
+	float: left;
+	padding-top: 230px;
+	padding-left: 30px;
+}
+
+.label-texto-conceptos{
+	color: white;
+	margin: 0;
+    position: absolute;
+    top: 90%;
+    left: 32%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+	color: white;
+	font: 380% times;
+}
+
+.texto-conceptos1{
+	float: right;
+	padding-top: 230px;
+	padding-right: 30px;
+}
+
+.label-texto-conceptos1{
+	color: white;
+	margin: 0;
+    position: absolute;
+    top: 90%;
+    left: 71%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+	color: white;
+	font: 180% times;
+}
+
+.texto-expertos{
+	padding-top: 110px;
+	text-align: center;
+}
+
+.label-texto-expertos{
+	margin: 0;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    width: 300px;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+	color: white;
+	font: 250% times;
+}
+
+.texto-clientes{
+	padding-top: 110px;
+	text-align: center;
+}
+
+.label-texto-clientes{
+	margin: 0;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    width: 300px;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+	color: white;
+	font: 250% times;
+}
+
+/*-----------------------------*/
+
+.referencia-index{ 
+	height: 100px;
+	cursor: pointer;
+}
+
+/*Opciones para la barra de navegación--------------------------------------*/
+
+@media screen and (min-width: 992px){
+
+	.contedor-medio{
+		width: 90%;
+	}
+
+	.contenedor-tendencias-moda{
+		left: 10;
+		top: 50;
+	}
+}
+/*Opciones para pantallas inferiores a 992px*/
+@media screen and (max-width: 992px) {
+	.texto-tendencias{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 400%;
+		font-weight: bold;
+	}
+
+	.texto-impresion-p{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 400%;
+		font-weight: bold;
+	}
+
+	.texto-moda{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 350%;
+		font-weight: normal;
+		margin-top: -35px;
+	}
+
+	.texto-demanda-p{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 350%;
+		font-weight: normal;
+		margin-top: -35px;
+	}
+
+	.contenedor-imagen{
+		min-height: 290px;
+		max-height: 290px;
+		
+	}
+
+	.contenedor-impresion{
+		min-height: 290px;
+		max-height: 290px;	
+	}
+
+	.contenedor-impresion-1{
+		min-height: 290px;
+		max-height: 290px;
+	}
+
+	.texto-opcion{
+		font-size: 15;
+	}
+
+	.texto-opcion1{
+		font-size: 10;
+	}
+
+
+}
+
+/*Opciones para pantallas superiores a 768px*/
+@media screen and (min-width: 768px){
+	.show{
+		display: none !important;
+	}
+
+	.hide{
+		display: block !important;
+	}
+
+	.imagen-barra img{
+		width: 100%; /*Responsive de imagen de la opcion*/
+		height: 235%;
+		margin: 0;
+	    position: absolute;
+	    top: 125%;
+	    left: 100%;
+	    -ms-transform: translate(-50%, -50%);
+	    transform: translate(-100%, -50%);
+	}
+
+	.texto-peque{
+		display: none;
+	}
+}
+
+/*Opciones para pantallas inferiores a 767px*/
+@media screen and (max-width: 767px){
+	.hide{
+		display: none !important;
+	}	
+
+	.show{
+		display: block !important;
+	}
+
+	.barras{
+		width: 30%;
+	}
+
+	.opcion-img{
+		width: 185px;
+		height: 150px;
+	}
+
+
+	.imagen-barra img{
+		width: 130%; /*Responsive de imagen de la opcion*/
+		height: 230%;
+		margin: 0;
+	    position: absolute;
+	    top: 111%;
+	    left: 120%;
+	    -ms-transform: translate(-50%, -50%);
+	    transform: translate(-100%, -50%);
+	}
+
+	.contenedor-tendencias-moda{
+		right: 85;
+		top: 20;
+	}
+
+	.referencia-index{
+		display: none;
+	}
+
+}
+
+/*Opciones para pantallas inferiores a 768px*/
+@media screen and (max-width: 768px) {
+	.texto-tendencias{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 300%;
+		font-weight: bold;
+	}
+
+	.texto-impresion-p{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 300%;
+		font-weight: bold;
+	}
+
+	.texto-moda{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 300%;
+		font-weight: normal;
+		margin-top: -30px;
+	}
+
+	.texto-demanda-p{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 300%;
+		font-weight: normal;
+		margin-top: -30px;
+	}
+
+	.label-texto-conceptos{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 200%;
+		font-weight: normal;
+		left: 27%;
+	}
+
+	.label-texto-conceptos1{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 130%;
+		font-weight: normal;
+	}
+
+	.label-texto-expertos{
+		font: 130% times;
+	}
+
+	.label-texto-clientes{
+		font: 140% times;
+	}
+
+	.contenedor-imagen{
+		min-height: 230px;
+		max-height: 230px;
+	}
+
+	.contenedor-impresion{
+		min-height: 230px;
+		max-height: 230px;
+	}
+
+	.contenedor-impresion-1{
+		min-height: 230px;
+		max-height: 230px;
+	}
+
+	.contenedor1{
+		max-height: 630px;
+	}
+
+	.texto-grande{
+		display: none;
+	}
+
+	.texto-peque{
+		display: block;
+	}
+
+}
+
+/*Opciones para pantallas inferiores a 480px*/
+@media screen and (max-width: 480px){
+
+	.texto-peque img{
+		width: 200px;
+		/*height: 70px;*/
+	}
+
+	.esconder-espacios{
+		display: none;
+	}
+
+	.contenedor-tendencias-moda{
+		right: 15%;
+		top: 25;
+	}
+	
+	.texto-tendencias{
+		text-align: right;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 200%;
+		font-weight: bold;
+	}
+
+	.texto-impresion-p{
+		text-align: right;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 200%;
+		font-weight: bold;
+	}
+
+	.texto-moda{
+		text-align: right;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 200%;
+		font-weight: normal;
+		margin-top: -20px;
+	}
+
+	.texto-demanda-p{
+		text-align: right;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 200%;
+		font-weight: normal;
+		margin-top: -20px;
+	}
+
+	.label-texto-conceptos{
+		top: 87%;
+		left: 32%;
+		font: 280% times;
+	}
+
+	.label-texto-conceptos1{
+		top: 87%;
+		left: 76%;
+		font: 110% times;
+	}
+
+	.label-texto-expertos{
+		font: 120% times;
+	}
+
+	.label-texto-clientes{
+		font: 120% times;
+	}
+
+	.referencia-index{
+		display: none;
+	}
+
+	.imagen-barra img{
+		width: 165%; /*Responsive de imagen de la opcion*/
+		height: 180%;
+		margin: 0;
+	    position: absolute;
+	    top: 71%;
+	    left: 160%;
+	    -ms-transform: translate(-50%, -50%);
+	    transform: translate(-100%, -50%);
+	}
+
+	.mostrar{
+		display: block !important;
+	}
+
+	.ocultar{
+		display: none !important;
+	}
+
+	.contenedor-imagen{
+        left: -3%;
+        width: 106%;
+		height: 100%;	
+		background-image: url("../images/Portada.jpg");
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		text-align: right;
+		min-height: 184px;
+		max-height: 184px;
+	}
+
+	.contenedor-impresion{
+        left: -10px;
+        width: 106%;
+		height: 100%;	
+		background-image: url("../images/impresion-principal-sm.png");
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		text-align: right;
+		min-height: 175px;
+		max-height: 175px;
+	}
+
+	.contenedor-impresion-1{
+		left: -10px;
+        width: 106%;
+		height: 100%;	
+		background-image: url("../images/impresion-1-sm.png");
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		text-align: right;
+		min-height: 175px;
+		max-height: 175px;
+	}
+	
+
+	.contenedor1{
+		width: 90%;
+		background-image: url("../images/Mujer Modelo.jpg");
+		background-repeat: no-repeat;
+		background-size: 90% 90%;	
+		background-position: center;
+		max-height: 393px;
+		min-height: 393px;
+		margin-left: 5%;
+		
+	}
+
+	.contenedor2{
+		width: 90%;
+		background-image: url("../images/Diseñadora.jpg");
+		background-repeat: no-repeat;
+		background-size: 90% 90%;	
+		background-position: center;
+		min-height: 263px;
+		max-height: 263px;
+		margin-left: 5%;
+	}
+
+	.contenedor3{
+		width: 90%;
+		background-image: url("../images/Clientes.jpg");
+		background-repeat: no-repeat;
+		background-size: 90% 90%;	
+		background-position: center;
+		min-height: 266px;
+		max-height: 266px;
+		margin-left: 5%;
+	}
+
+	.contenedor-inferior .row .mostrar{
+		font-size: small;
+	}
+
+	.texto-footer{
+		color: black;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 97%;
+		font-weight: bold;
+	}
+	.texto-footer1{
+		color: black;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 90%;
+		font-weight: normal;
+	}
+	
+}
+
+@media screen and (min-width: 481px){
+	.mostrar{
+		display: none !important;
+	}
+
+	.ocultar{
+		display: block !important;
+	}
+}
+
+.opcion-img img{
+	width: 90%;
+}
+
+
+
+.opcion-img img:hover{
+	transform : scale(1.1);	
+    -moz-transform : scale(1.1);       /*Firefox*/ 
+    -webkit-transform : scale(1.1);    /*Chrome - Safari*/ 
+    -o-transform : scale(1.1);         /*Opera */
+    transition: width 0.5s, height 0.5s, transform 0.5s;
+    -moz-transition: width 0.5s, height 0.5s, -moz-transform 0.5s;
+    -webkit-transition: width 0.5s, height 0.5s, -webkit-transform 0.5s;
+    -o-transition: width 0.5s, height 0.5s,-o-transform 0.5s;
+    cursor: pointer;
+}
+
+
+

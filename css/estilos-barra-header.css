@@ -1,0 +1,122 @@
+.navbar-color{
+	background-color: white;
+}
+
+.referencia-index{ 
+	height: 100px;
+	cursor: pointer;
+}
+
+
+.imagen-carro img{
+	height: 50px;
+	margin-top:-15px;
+}
+
+.opcion-nav{
+	font-weight: normal;
+	color: #000000;
+	cursor: pointer;
+	font-size: 14;
+}
+
+.opcion-nav:hover{
+	background-color: #ECE7E4;
+}
+
+@media screen and (min-width: 992px){
+	.opcion-nav{
+		font-size: 22;
+	}
+}
+
+/*Barra Principal para Pantallas pequeñas*/
+@media screen and (max-width: 767px){
+	.show-menu{
+		display: block !important;
+	}
+
+	.imagen-barra img{
+		width: 130%; /*Responsive de imagen de la opcion*/
+		height: 230%;
+		margin: 0;
+	    position: absolute;
+	    top: 111%;
+	    left: 120%;
+	    -ms-transform: translate(-50%, -50%);
+	    transform: translate(-100%, -50%);
+	}
+
+	.navbar{
+		background-color: transparent;
+		border-color: transparent;
+		background: transparent;
+	}
+
+	.navbar li{
+		background-color: #fff;
+		border-color: transparent;
+	}
+
+	.referencia-index{
+		display: none;
+	}
+}
+
+@media screen and (min-width: 768px){
+
+	.show-menu{
+		display: none !important;
+	}
+
+	.imagen-barra img{
+		width: 100%; /*Responsive de imagen de la opcion*/
+		height: 235%;
+		margin: 0;
+	    position: absolute;
+	    top: 125%;
+	    left: 100%;
+	    -ms-transform: translate(-50%, -50%);
+	    transform: translate(-100%, -50%);
+	}
+}
+
+@media screen and (min-width: 481px){
+	.mostrar-nav{
+		display: none !important;
+	}
+
+	.ocultar-nav{
+		display: block !important;
+	}
+}
+
+@media screen and (max-width: 480px){
+	.mostrar-nav{
+		display: block !important;
+	}
+
+	.ocultar-nav{
+		display: none !important;
+	}
+
+	.referencia-index{
+		display: none;
+	}
+
+	.imagen-barra img{
+		width: 165%; /*Responsive de imagen de la opcion*/
+		height: 180%;
+		margin: 0;
+	    position: absolute;
+	    top: 71%;
+	    left: 160%;
+	    -ms-transform: translate(-50%, -50%);
+	    transform: translate(-100%, -50%);
+	}
+}
+
+.mov:hover{
+	background-color: #ECE7E4;
+}
+

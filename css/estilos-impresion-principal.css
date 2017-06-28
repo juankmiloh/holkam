@@ -1,0 +1,256 @@
+body{
+	/*comandos para que no se pueda seleccionar el texto*/
+	-webkit-user-select: none; 
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/*Opciones para la imagen de fondo de la barra de navegación*/
+
+.contenedor-impresion{
+	left: -10px;
+	margin-top: 45px;	
+	width: 102%;
+	height: 100%;
+	background-image: url("../images/impresion-principal.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	text-align: right;
+	max-height: 449px;
+	min-height: 255px;
+}
+
+
+.barras{
+	height: 1px;
+	background-color: black;
+	width: 50%;
+}
+
+/*--------------------------------------------------------------------------*/
+/*Opciones para el texto y tamaño límite de la imagen principal---------------------------------------*/
+
+
+
+.texto-impresion-p{
+	text-align: right;
+	color: white;
+	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 650%;
+	font-weight: bold;
+}
+
+.texto-demanda-p{
+	text-align: right;
+	color: white;
+	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 600%;
+	font-weight: normal;
+	margin-top: -40px;
+}
+
+.texto{
+	font-family: "Myriad Pro";
+	font-size: 25;
+	color: black;
+}
+
+.texto-opcion{
+	font-size: 20;
+}
+
+
+
+/*Opciones para la barra de navegación--------------------------------------*/
+
+@media screen and (min-width: 992px){
+
+	.contedor-medio{
+		width: 90%;
+	}
+
+	.contenedor-tendencias-moda{
+		left: 10;
+		top: 50;
+	}
+}
+/*Opciones para pantallas inferiores a 992px*/
+@media screen and (max-width: 992px) {
+	
+	.texto-impresion-p{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 400%;
+		font-weight: bold;
+	}
+
+	.texto-demanda-p{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 350%;
+		font-weight: normal;
+		margin-top: -35px;
+	}
+
+
+	.contenedor-impresion{
+		min-height: 290px;
+		max-height: 290px;	
+	}
+
+	.texto{
+		font-size: 22;
+	}
+}
+
+/*Opciones para pantallas superiores a 768px*/
+@media screen and (min-width: 768px){
+	.show{
+		display: none !important;
+	}
+
+	.hide{
+		display: block !important;
+	}
+
+	.opcion-img{
+		width: 177px;
+		height: 148px;
+	}
+}
+
+/*Opciones para pantallas inferiores a 767px*/
+@media screen and (max-width: 767px){
+	.hide{
+		display: none !important;
+	}	
+
+	.show{
+		display: block !important;
+	}
+
+	.barras{
+		width: 30%;
+	}
+
+	.opcion-img{
+		width: 185px;
+		height: 150px;
+	}
+
+	.contenedor-tendencias-moda{
+		right: 85;
+		top: 20;
+	}
+
+}
+
+/*Opciones para pantallas inferiores a 768px*/
+@media screen and (max-width: 768px) {
+	
+	.texto-impresion-p{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 300%;
+		font-weight: bold;
+	}
+
+	.texto-demanda-p{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 300%;
+		font-weight: normal;
+		margin-top: -30px;
+	}
+
+	.contenedor-impresion{
+		min-height: 230px;
+		max-height: 230px;
+	}
+
+	.texto{
+		font-size: 17;
+	}
+
+}
+
+/*Opciones para pantallas inferiores a 480px*/
+@media screen and (max-width: 480px){
+
+	.contenedor-tendencias-moda{
+		right: 15%;
+		top: 25;
+	}
+	
+
+	.texto-impresion-p{
+		text-align: right;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 200%;
+		font-weight: bold;
+	}
+
+	.texto-demanda-p{
+		text-align: right;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 200%;
+		font-weight: normal;
+		margin-top: -20px;
+	}
+
+
+	.mostrar{
+		display: block !important;
+	}
+
+	.ocultar{
+		display: none !important;
+	}
+
+
+	.contenedor-impresion{
+        left: -10px;
+        width: 106%;
+		height: 100%;	
+		background-image: url("../images/impresion-principal-sm.png");
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		text-align: right;
+		min-height: 175px;
+		max-height: 175px;
+	}
+
+	.texto{
+		font-size: 14;
+	}
+	
+}
+
+@media screen and (min-width: 481px){
+	.mostrar{
+		display: none !important;
+	}
+
+	.ocultar{
+		display: block !important;
+	}
+}
+
+.opcion-img img{
+	width: 90%;
+}
+
+.opcion-img img:hover{
+	transform : scale(1.09);	
+    -moz-transform : scale(1.09);       /*Firefox*/ 
+    -webkit-transform : scale(1.09);    /*Chrome - Safari*/ 
+    -o-transform : scale(1.09);         /*Opera */
+    transition: width 0.5s, height 0.5s, transform 0.5s;
+    -moz-transition: width 0.5s, height 0.5s, -moz-transform 0.5s;
+    -webkit-transition: width 0.5s, height 0.5s, -webkit-transform 0.5s;
+    -o-transition: width 0.5s, height 0.5s,-o-transform 0.5s;
+    cursor: pointer;
+}
+
+
+
+
+
+

@@ -1,0 +1,542 @@
+ /*------------------------------------------------------------------------------------*/
+
+/*Opciones para la imagen de fondo de la barra de navegación*/
+
+.texto-opcion{
+	color: #fff;
+	height: 18%;
+	width: 80%;
+	position: absolute;
+	bottom:-5px;
+	left: 10%;
+	font-size: 15;
+}
+
+.texto-opcion1{
+	color: #fff;
+	height: 18%;
+	width: 80%;
+	position: absolute;
+	bottom:-5px;
+	left: 10%;
+	font-size: 13;
+}
+
+.contenedor-impresion{
+	left: -10px;
+	margin-top: 45px;	
+	width: 101%;
+	height: 100%;
+	background-image: url("../images/Libreria_02.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	text-align: right;
+	max-height: 449px;
+	min-height: 255px;
+}
+
+
+.barras{
+	height: 1px;
+	background-color: black;
+	width: 50%;
+}
+
+.texto{
+	font-family: "Myriad Pro";
+	font-size: 25;
+	color: black;
+}
+
+/*--------------------------------------------------------------------------*/
+/*Opciones para el texto y tamaño límite de la imagen principal---------------------------------------*/
+
+
+
+.texto-impresion-p{
+	text-align: right;
+	color: white;
+	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 650%;
+	font-weight: bold;
+}
+
+.texto-demanda-p{
+	text-align: right;
+	color: white;
+	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 600%;
+	font-weight: normal;
+	margin-top: -40px;
+}
+
+.texto-intro-pantallas-sm{
+	display: none;
+}
+
+/*=============================================
+* Opciones para crear el select genero
+*==============================================*/
+
+.contenedor-select-genero{
+	background: url('../images/img_select_genero.png');
+	height: 35px;
+	width: 185px;
+	cursor: pointer;
+}
+
+.select-genero{
+	opacity: 0;
+	height: 35px;
+	cursor: pointer;
+}
+
+.label-select-genero{
+	border: 0px solid;
+	height: 35px;
+	width: 185px;
+	padding-top: 2px;
+	padding-left: 15px;
+	position:absolute;
+	z-index:0;
+}
+
+.texto-select-genero{
+	color: black;
+	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	font-weight: normal;
+}
+
+/* ------------------- */
+
+.contenedor-text-buscar{
+	background: url('../images/img_text_buscar.png');
+	height: 35px;
+	width: 400px;
+	border: 0px solid;
+}
+
+.text-buscar{
+	height: 35px;
+	cursor: pointer;
+	background: gray;
+}
+
+.contenedor-text-autor{
+	background: url('../images/img_text_autor.png');
+	height: 33px;
+	width: 277px;
+	border: 0px solid;
+}
+
+/* ------------------- */
+
+.texto-label-nl{
+	text-align: left;
+	color: black;
+	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 24px;
+	font-weight: normal;
+	right: 40px;
+}
+
+/*=============================================
+* Opciones para el contenedor de libros destacados (pantallas grandes)
+*==============================================*/
+
+.contenedor_libros_destacados{
+	background-color: #dedede; border: 0px solid; height: 150px;
+}
+
+.div_img_libro{
+	position: relative;
+    height: 150px;
+    border: 0px solid;
+}
+
+.centrar_img_libro {
+    position: absolute;
+    left: 0;
+    top: -50%;
+    width: 100%;
+    text-align: center;
+    z-index: 100;
+}
+
+.img_libro_destacado_aparece{
+	transform : scale(1.01);	
+    -moz-transform : scale(1.01);       /*Firefox*/ 
+    -webkit-transform : scale(1.01);    /*Chrome - Safari*/ 
+    -o-transform : scale(1.01);         /*Opera */
+    transition: width 0.5s, height 0.5s, transform 0.5s;
+    -moz-transition: width 0.5s, height 0.5s, -moz-transform 0.5s;
+    -webkit-transition: width 0.5s, height 0.5s, -webkit-transform 0.5s;
+    -o-transition: width 0.5s, height 0.5s,-o-transform 0.5s;
+}
+
+.img_libro_destacado_normal{
+	transform : scale(1);	
+    -moz-transform : scale(1);       /*Firefox*/ 
+    -webkit-transform : scale(1);    /*Chrome - Safari*/ 
+    -o-transform : scale(1);         /*Opera */
+    transition: width 0.5s, height 0.5s, transform 0.5s;
+    -moz-transition: width 0.5s, height 0.5s, -moz-transform 0.5s;
+    -webkit-transition: width 0.5s, height 0.5s, -webkit-transform 0.5s;
+    -o-transition: width 0.5s, height 0.5s,-o-transform 0.5s;
+}
+
+.div_titulo_libro{
+	text-align: right; font-size: 20px; text-align: right; color: black;
+}
+
+.img_flecha_izquierda{
+	cursor: pointer;
+}
+
+.img_flecha_izquierda:hover{
+	background: #6e3b23 url('../images/libro_left_hover.png') no-repeat;
+	content:url(../images/libro_left_hover.png);
+	transform : scale(1.1);	
+    -moz-transform : scale(1.1);       /*Firefox*/ 
+    -webkit-transform : scale(1.1);    /*Chrome - Safari*/ 
+    -o-transform : scale(1.1);         /*Opera */
+    transition: width 0.5s, height 0.5s, transform 0.5s;
+    -moz-transition: width 0.5s, height 0.5s, -moz-transform 0.5s;
+    -webkit-transition: width 0.5s, height 0.5s, -webkit-transform 0.5s;
+    -o-transition: width 0.5s, height 0.5s,-o-transform 0.5s;
+
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    cursor: pointer;
+}
+
+.div_flecha_derecha{
+	padding-top: 5%; right: 4.2%
+}
+
+.img_flecha_derecha{
+	cursor: pointer;
+	width: auto;
+}
+
+.img_flecha_derecha:hover{
+	background: #6e3b23 url('../images/libro_right_hover.png') no-repeat;
+	content:url(../images/libro_right_hover.png);
+	transform : scale(1.1);	
+    -moz-transform : scale(1.1);       /*Firefox*/ 
+    -webkit-transform : scale(1.1);    /*Chrome - Safari*/ 
+    -o-transform : scale(1.1);         /*Opera */
+    transition: width 0.5s, height 0.5s, transform 0.5s;
+    -moz-transition: width 0.5s, height 0.5s, -moz-transform 0.5s;
+    -webkit-transition: width 0.5s, height 0.5s, -webkit-transform 0.5s;
+    -o-transition: width 0.5s, height 0.5s,-o-transform 0.5s;
+    
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    cursor: pointer;
+}
+
+.img_carrito_libro{
+	cursor: pointer;
+}
+
+.img_carrito_libro:hover{
+	transform : scale(1.1);	
+    -moz-transform : scale(1.1);       /*Firefox*/ 
+    -webkit-transform : scale(1.1);    /*Chrome - Safari*/ 
+    -o-transform : scale(1.1);         /*Opera */
+    transition: width 0.5s, height 0.5s, transform 0.5s;
+    -moz-transition: width 0.5s, height 0.5s, -moz-transform 0.5s;
+    -webkit-transition: width 0.5s, height 0.5s, -webkit-transform 0.5s;
+    -o-transition: width 0.5s, height 0.5s,-o-transform 0.5s;
+    cursor: pointer;
+}
+
+.centrar_img_libro img:hover{
+  -webkit-animation: swing 1s ease;
+animation: swing 1s ease;
+-webkit-animation-iteration-count: 1;
+animation-iteration-count: 1;
+  cursor: pointer;
+}
+
+/*Opciones para la barra de navegación--------------------------------------*/
+
+@media screen and (min-width: 992px){
+
+	.contedor-medio{
+		width: 50%;
+	}
+
+	.contenedor-tendencias-moda{
+		left: 10;
+		top: 50;
+	}
+}
+/*Opciones para pantallas inferiores a 992px*/
+@media screen and (max-width: 992px) {
+	
+	.texto-impresion-p{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 400%;
+		font-weight: bold;
+	}
+
+	.texto-demanda-p{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 350%;
+		font-weight: normal;
+		margin-top: -35px;
+	}
+
+
+	.contenedor-impresion{
+		min-height: 290px;
+		max-height: 290px;	
+	}
+
+	.texto{
+		font-size: 22;
+	}
+
+	.texto-intro-pantallas-md{
+		display: none;
+	}
+
+	.texto-intro-pantallas-sm{
+		display: block;º
+	}
+}
+
+/*Opciones para pantallas superiores a 768px*/
+@media screen and (min-width: 768px){
+	.show{
+		display: none !important;
+	}
+
+	.hide{
+		display: block !important;
+	}
+
+	.texto-peque{
+		display: none;
+	}
+}
+
+/*Opciones para pantallas inferiores a 767px*/
+@media screen and (max-width: 767px){
+	.hide{
+		display: none !important;
+	}	
+
+	.show{
+		display: block !important;
+	}
+
+	.barras{
+		width: 30%;
+	}
+
+	.opcion-img{
+		width: 185px;
+		height: 150px;
+	}
+
+	.contenedor-tendencias-moda{
+		right: 85;
+		top: 20;
+	}
+
+}
+
+/*Opciones para pantallas inferiores a 768px*/
+@media screen and (max-width: 768px) {
+	
+	.texto-impresion-p{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 300%;
+		font-weight: bold;
+	}
+
+	.texto-demanda-p{
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 300%;
+		font-weight: normal;
+		margin-top: -30px;
+	}
+
+	.contenedor-impresion{
+		min-height: 230px;
+		max-height: 230px;
+	}
+
+	.texto-grande{
+		display: none;
+	}
+
+	.texto-peque{
+		display: block;
+	}
+
+	.texto{
+		font-size: 17;
+	}
+
+}
+
+/*Opciones para pantallas inferiores a 480px*/
+@media screen and (max-width: 480px){
+
+	.texto-peque img{
+		width: 200px;
+		/*height: 70px;*/
+	}
+
+	.contenedor-tendencias-moda{
+		right: 15%;
+		top: 25;
+	}
+	
+
+	.texto-impresion-p{
+		text-align: right;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 200%;
+		font-weight: bold;
+	}
+
+	.texto-demanda-p{
+		text-align: right;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 200%;
+		font-weight: normal;
+		margin-top: -20px;
+	}
+
+
+	.mostrar{
+		display: block !important;
+	}
+
+	.ocultar{
+		display: none !important;
+	}
+
+
+	.contenedor-impresion{
+        left: -10px;
+        width: 106%;
+		height: 100%;	
+		background-image: url("../images/Seccion-libro_02-sm.png");
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		text-align: right;
+		min-height: 175px;
+		max-height: 175px;
+	}
+
+	.texto{
+		font-size: 14;
+	}
+	
+}
+
+@media screen and (min-width: 481px){
+	.mostrar{
+		display: none !important;
+	}
+
+	.ocultar{
+		display: block !important;
+	}
+}
+
+.opcion-img img{
+	width: 90%;
+}
+
+.opcion-img img:hover{
+	transform : scale(1.1);	
+    -moz-transform : scale(1.1);       /*Firefox*/ 
+    -webkit-transform : scale(1.1);    /*Chrome - Safari*/ 
+    -o-transform : scale(1.1);         /*Opera */
+    transition: width 0.5s, height 0.5s, transform 0.5s;
+    -moz-transition: width 0.5s, height 0.5s, -moz-transform 0.5s;
+    -webkit-transition: width 0.5s, height 0.5s, -webkit-transform 0.5s;
+    -o-transition: width 0.5s, height 0.5s,-o-transform 0.5s;
+    cursor: pointer;
+}
+
+/*vamos a definir en primer lugar una animación CSS en sus estilos.*/
+
+@-webkit-keyframes swing
+{
+15%
+{
+-webkit-transform: translateX(5px);
+transform: translateX(5px);
+}
+30%
+{
+-webkit-transform: translateX(-5px);
+transform: translateX(-5px);
+}
+50%
+{
+-webkit-transform: translateX(3px);
+transform: translateX(3px);
+}
+65%
+{
+-webkit-transform: translateX(-3px);
+transform: translateX(-3px);
+}
+80%
+{
+-webkit-transform: translateX(2px);
+transform: translateX(2px);
+}
+100%
+{
+-webkit-transform: translateX(0);
+transform: translateX(0);
+}
+}
+@keyframes swing
+{
+15%
+{
+-webkit-transform: translateX(5px);
+transform: translateX(5px);
+}
+30%
+{
+-webkit-transform: translateX(-5px);
+transform: translateX(-5px);
+}
+50%
+{
+-webkit-transform: translateX(3px);
+transform: translateX(3px);
+}
+65%
+{
+-webkit-transform: translateX(-3px);
+transform: translateX(-3px);
+}
+80%
+{
+-webkit-transform: translateX(2px);
+transform: translateX(2px);
+}
+100%
+{
+-webkit-transform: translateX(0);
+transform: translateX(0);
+}
+}
+
+
+
+
