@@ -1,7 +1,7 @@
 angular.module("MyFirstApp",[])
 .controller("FirstController",function($scope,$http) {
 	$scope.posts = [];
-	$http.get("http://holkam.co.nf/json/json_libros.php")
+	$http.get("../json/json_libros.php")
 	.then(function(result) {
         console.log(result);
         $scope.posts = result.data;﻿
@@ -11,16 +11,12 @@ angular.module("MyFirstApp",[])
     });
 
     var focalizar = $("#div_focalizar").position().top; //div a donde se quiere scrollear la pagina
-
-    $("#boton_img").click(function(){
-        alert("click_flecha_derecha");
-    });
 	
-	$(".contenedor-text-buscar").click(function(){
+	$(".lupa-buscar-libro").click(function(){
 		if ($('#text_buscar_libro').val() != "") {
 			$scope.posts = [];
 			var parametros = {libro: $scope.libro};
-			$http.post('http://holkam.co.nf/json/json_buscar_libro.php', {data: parametros})
+			$http.post('../json/json_buscar_libro.php', {data: parametros})
 			.then(function(result) {
 		        if (result.data.length != 0) {
 					console.log(result);
@@ -28,7 +24,7 @@ angular.module("MyFirstApp",[])
 		        	$('html,body').animate({scrollTop: focalizar}, 1000);
 				}else{
 					swal(
-						'Error',
+						'No Encontrado',
 						'Verifique el nombre del libro!',
 						'error'
 			        );
@@ -45,7 +41,7 @@ angular.module("MyFirstApp",[])
 		if (tecla.keyCode == 13) {
 			$scope.posts = [];
 			var parametros = {libro: $scope.libro};
-			$http.post('http://holkam.co.nf/json/json_buscar_libro.php', {data: parametros})
+			$http.post('../json/json_buscar_libro.php', {data: parametros})
 			.then(function(result) {
 				if (result.data.length != 0) {
 					console.log(result);
@@ -53,7 +49,7 @@ angular.module("MyFirstApp",[])
 					$('html,body').animate({scrollTop: focalizar}, 1000);
 				}else{
 					swal(
-						'Error',
+						'No Encontrado',
 						'Verifique el nombre del libro!',
 						'error'
 			        );
@@ -66,11 +62,11 @@ angular.module("MyFirstApp",[])
 		}
 	});
 
-	$(".contenedor-text-autor").click(function(){
+	$(".lupa-buscar-autor").click(function(){
 		if ($('#text_buscar_autor').val() != "") {
 			$scope.posts = [];
 			var parametros = {libro: $scope.libro};
-			$http.post('http://holkam.co.nf/json/json_buscar_autor.php', {data: parametros})
+			$http.post('../json/json_buscar_autor.php', {data: parametros})
 			.then(function(result) {
 		        if (result.data.length != 0) {
 					console.log(result);
@@ -78,7 +74,7 @@ angular.module("MyFirstApp",[])
 		        	$('html,body').animate({scrollTop: focalizar}, 1000);
 				}else{
 					swal(
-						'Error',
+						'No Encontrado',
 						'Verifique el nombre del autor!',
 						'error'
 			        );
@@ -95,7 +91,7 @@ angular.module("MyFirstApp",[])
 		if (tecla.keyCode == 13) {
 			$scope.posts = [];
 			var parametros = {libro: $scope.libro};
-			$http.post('http://holkam.co.nf/json/json_buscar_autor.php', {data: parametros})
+			$http.post('../json/json_buscar_autor.php', {data: parametros})
 			.then(function(result) {
 				if (result.data.length != 0) {
 					console.log(result);
@@ -103,7 +99,7 @@ angular.module("MyFirstApp",[])
 		        	$('html,body').animate({scrollTop: focalizar}, 1000);
 				}else{
 					swal(
-						'Error',
+						'No Encontrado',
 						'Verifique el nombre del autor!',
 						'error'
 			        );
@@ -135,11 +131,13 @@ angular.module("MyFirstApp",[])
 	}
 
 	$scope.buscar_x_genero = function(genero) {
+		var texto_label = $('#label_select_genero');
+		texto_label.text("");
 		//swal(genero);
 		$scope.posts = [];
 		var parametros = {nombre_genero: genero};
 		//console.log(parametros);
-		$http.post('http://holkam.co.nf/json/json_buscar_genero.php', {libro: parametros})
+		$http.post('../json/json_buscar_genero.php', {libro: parametros})
 		.then(function(result) {
 	        if (result.data.length != 0) {
 				console.log(result);
@@ -147,7 +145,7 @@ angular.module("MyFirstApp",[])
 	        	$('html,body').animate({scrollTop: focalizar}, 1000);
 			}else{
 				swal(
-					'Error',
+					'No Encontrado',
 					'Verifique el nombre del género!',
 					'error'
 		        );
@@ -158,8 +156,25 @@ angular.module("MyFirstApp",[])
 	    });
 	}
 
-	$scope.probando = function(parametro){
-		//alert(parametro.target.id);
-		window.location = "www.google.com";
+	// Funcion para obtener el id del libro
+	$scope.obtenerId = function(evento){
+		var id_capturado = evento.target.id;
+		window.location = "../pages/carrito_agregar.php?id="+id_capturado;
 	}
+
+	// Funcion para obtener el id del libro y enviarlo a la pagina de detalle del libro
+	$scope.detalle_libro = function(evento){
+		var id_capturado = evento.target.id;
+		window.location = "../pages/libreria_universidad_detalle_libro.php?id="+id_capturado;
+	}
+
+	$scope.posts = [];
+	$http.get("../json/json_libros.php")
+	.then(function(result) {
+        console.log(result);
+        $scope.posts = result.data;﻿
+    }, function(result) {
+        //some error
+        console.log(result);
+    });	
 });

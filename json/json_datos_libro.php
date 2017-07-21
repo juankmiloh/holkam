@@ -1,12 +1,13 @@
 <?php
 	header("access-control-allow-origin: *");
+	header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
 	include ("../conexion_bd/conexion_BD.php");
 
 	$consecutivo = $_POST['consecutivo'];
 
 	//generamos la consulta
-	$sql = "SELECT COUNT(*) cantidad_filas,l.consecutivo,l.k_codlibro,l.n_titulo,l.v_precio,fl.n_fotografia FROM holkam_libro l,holkam_fotografia_libro fl WHERE l.k_codlibro=fl.k_codlibro AND l.consecutivo=".$consecutivo."";
+	$sql = "SELECT COUNT(*) cantidad_filas,l.consecutivo,l.k_codlibro,l.n_titulo,l.n_autor,l.v_precio,fl.n_fotografia FROM libro l,libro_fotografia fl WHERE l.k_codlibro=fl.k_codlibro AND l.consecutivo=".$consecutivo."";
 	mysqli_set_charset($con, "utf8"); //formato de datos utf8
 
 	if(!$result = mysqli_query($con, $sql)) die();
@@ -18,6 +19,7 @@
 		$consecutivo = $row['consecutivo'];
 	    $k_codlibro = $row['k_codlibro'];
 	    $n_titulo = $row['n_titulo'];
+	    $n_autor = $row['n_autor'];
 	    $v_precio = $row['v_precio'];
 	    $n_fotografia = $row['n_fotografia'];
 
@@ -25,6 +27,7 @@
 	    						  'consecutivo'=> $consecutivo,
 	    						  'k_codlibro'=> $k_codlibro,
 				           		  'n_titulo'=> $n_titulo,
+				           		  'n_autor'=> $n_autor,
 				           		  'v_precio'=> $v_precio,
 				           		  'n_fotografia'=> $n_fotografia);
 	}

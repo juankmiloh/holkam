@@ -1,7 +1,110 @@
- /*------------------------------------------------------------------------------------*/
+body{
+	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
-/*Opciones para la imagen de fondo de la barra de navegación*/
+/*=============================================
+* ESTILOS PARA VENTANA DE CARGAR
+*==============================================*/
 
+.fbback{
+	display:none;
+	z-index:10;
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background-color:rgba(0,0,0,0.5);
+}
+
+.fb{
+	display: none;
+	position:absolute;
+	z-index:10;
+	background-color:#fff;
+	border-radius:7px;
+	box-shadow:1px 2px 4px rgba(0,0,0,0.7);
+	top: 50%; 
+  	left: 50%;
+  	transform: translate(-50%, 70%);
+}
+
+.cambiar{
+	top: 50%; 
+  	left: 50%;
+  	transform: translate(-50%, 200%);
+}
+
+.close{
+	position:absolute;
+	cursor:pointer;
+	right:4px;
+	top:4px;
+	height:13px;
+	width:13px;
+	background:url('../images/cross.png') -13px 0px;
+}
+
+.close:hover{
+	background-position:0px;
+}
+
+.dheader{
+	background-color:#0F61B3;
+	padding:4px 27px 5px 10px;
+	font-family:'Trebuchet MS',Arial,Helvetica,sans-serif;font-size:14px;
+	color:white;
+	font-weight:bold;
+	text-align:left;
+	white-space:nowrap;
+	box-shadow:0 -7px 9px rgba(0,0,0,0.2) inset;
+	border-radius:5px 5px 0 0;
+	text-shadow:1px 1px 2px rgba(0, 0, 0, 0.5);
+	border-top:1px solid rgba(0,0,0,0.15);
+	border-left:1px solid rgba(0,0,0,0.15);
+	border-right:1px solid rgba(0,0,0,0.15);
+}
+
+.dcontent{
+	padding:10px;
+	text-align:left;
+	font-weight:normal;
+	color:#575757;
+}
+
+.buttonx{
+	border-radius:4px;
+	border:1px solid #999;
+	text-shadow:1px 1px 1px #fff;
+	background:url('../images/button_bg.png') 0 0 repeat-x #fafafa;
+	font-family:Verdana,Geneva,sans-serif;text-decoration:none;
+	cursor:pointer;
+	display:-moz-inline-box;display:inline-block;
+	zoom:1;
+	*display:inline;
+	font-weight:normal;
+	padding:0 10px;
+	font-size:12px;
+	line-height:20px;
+	color:#000;
+	-webkit-touch-callout:none;
+	-webkit-user-select:none;
+	-khtml-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	-o-user-select:none;
+	user-select:none;
+}
+
+.buttonx:hover{
+	border-color:#105289;
+	background-position:left bottom;
+	color:#a00;
+}
+
+/*=============================================
+* OPCIONES PARA LA IMAGEN DE FONDO DE LA BARRA DE NAVEGACION
+*==============================================*/
 .texto-opcion{
 	color: #fff;
 	height: 18%;
@@ -25,7 +128,6 @@
 .contenedor-impresion{
 	left: -10px;
 	margin-top: 45px;	
-	width: 101%;
 	height: 100%;
 	background-image: url("../images/Libreria_02.png");
 	background-repeat: no-repeat;
@@ -35,7 +137,6 @@
 	min-height: 255px;
 }
 
-
 .barras{
 	height: 1px;
 	background-color: black;
@@ -43,20 +144,16 @@
 }
 
 .texto{
-	font-family: "Myriad Pro";
 	font-size: 25;
 	color: black;
 }
 
-/*--------------------------------------------------------------------------*/
-/*Opciones para el texto y tamaño límite de la imagen principal---------------------------------------*/
-
-
-
+/*=============================================
+* OPCIONES PARA EL TEXTO Y TAMAÑO LIMITE DE LA IMAGEN PRINCIPAL
+*==============================================*/
 .texto-impresion-p{
 	text-align: right;
 	color: white;
-	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 650%;
 	font-weight: bold;
 }
@@ -64,7 +161,6 @@
 .texto-demanda-p{
 	text-align: right;
 	color: white;
-	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 600%;
 	font-weight: normal;
 	margin-top: -40px;
@@ -75,95 +171,82 @@
 }
 
 /*=============================================
-* Opciones para crear el select genero
+* OPCIONES PARA CREAR EL SELECT GENERO / EL TEXT BUSCAR LIBRO / EL TEXT BUSCAR AUTOR
 *==============================================*/
 
-.contenedor-select-genero{
-	background: url('../images/img_select_genero.png');
-	height: 35px;
-	width: 185px;
+.label-select-genero{
+	position: absolute;
+	z-index: 1;
+	top: 0.5em;
+	left: 1.7em;
+	color: gray;
+	cursor: pointer;
+}
+
+.img-select-genero{
+	position: absolute;
+	z-index: 1;
+	top: 0.7em;
+	color: gray;
 	cursor: pointer;
 }
 
 .select-genero{
-	opacity: 0;
-	height: 35px;
+	-webkit-appearance: none; /*codigo para eliminar valores por default del select y poder modificar los bordes*/
+    -moz-appearance: none; /*codigo para eliminar valores por default del select y poder modificar los bordes*/
+    background: url('../images/fondo_text.png');
+	background-repeat: no-repeat;
+    background-size: 100% 100%;
+	cursor: pointer;
+	color: gray;
+	border-radius: 23px 23px 23px 23px;
+	-moz-border-radius: 23px 23px 23px 23px;
+	-webkit-border-radius: 23px 23px 23px 23px;
+	border: 1px solid #ffffff;
 	cursor: pointer;
 }
 
-.label-select-genero{
-	border: 0px solid;
-	height: 35px;
-	width: 185px;
-	padding-top: 2px;
-	padding-left: 15px;
-	position:absolute;
-	z-index:0;
+.text-buscar-libro{
+	-webkit-appearance: none; /*codigo para eliminar valores por default del select y poder modificar los bordes*/
+    -moz-appearance: none; /*codigo para eliminar valores por default del select y poder modificar los bordes*/
+	background: url('../images/fondo_text.png');
+	background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 23px 23px 23px 23px;
+	-moz-border-radius: 23px 23px 23px 23px;
+	-webkit-border-radius: 23px 23px 23px 23px;
+	border: 1px solid #ffffff;
 }
 
-.texto-select-genero{
-	color: black;
-	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 20px;
-	font-weight: normal;
-}
-
-/* ------------------- */
-
-.contenedor-text-buscar{
-	background: url('../images/img_text_buscar.png');
-	height: 35px;
-	width: 400px;
-	border: 0px solid;
-}
-
-.text-buscar{
-	height: 35px;
+.lupa-buscar-libro{
+	position: absolute;
+	z-index: 1;
+	top: 0.4em;
 	cursor: pointer;
-	background: gray;
 }
 
-.contenedor-text-autor{
-	background: url('../images/img_text_autor.png');
-	height: 33px;
-	width: 277px;
-	border: 0px solid;
+.text-buscar-autor{
+	-webkit-appearance: none; /*codigo para eliminar valores por default del select y poder modificar los bordes*/
+    -moz-appearance: none; /*codigo para eliminar valores por default del select y poder modificar los bordes*/
+	background: url('../images/fondo_text.png');
+	background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 23px 23px 23px 23px;
+	-moz-border-radius: 23px 23px 23px 23px;
+	-webkit-border-radius: 23px 23px 23px 23px;
+	border: 1px solid #ffffff;
 }
 
-/* ------------------- */
-
-.texto-label-nl{
-	text-align: left;
-	color: black;
-	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 24px;
-	font-weight: normal;
-	right: 40px;
+.lupa-buscar-autor{
+	position: absolute;
+	z-index: 1;
+	top: 0.4em;
+	cursor: pointer;
 }
 
 /*=============================================
-* Opciones para el contenedor de libros destacados (pantallas grandes)
+* OPCIONES PARA EL CONTENDEOR DE LIBROS DESTACADOS - [AMBAS PANTALLAS]
 *==============================================*/
-
-.contenedor_libros_destacados{
-	background-color: #dedede; border: 0px solid; height: 150px;
-}
-
-.div_img_libro{
-	position: relative;
-    height: 150px;
-    border: 0px solid;
-}
-
-.centrar_img_libro {
-    position: absolute;
-    left: 0;
-    top: -50%;
-    width: 100%;
-    text-align: center;
-    z-index: 100;
-}
-
 .img_libro_destacado_aparece{
 	transform : scale(1.01);	
     -moz-transform : scale(1.01);       /*Firefox*/ 
@@ -184,6 +267,23 @@
     -moz-transition: width 0.5s, height 0.5s, -moz-transform 0.5s;
     -webkit-transition: width 0.5s, height 0.5s, -webkit-transform 0.5s;
     -o-transition: width 0.5s, height 0.5s,-o-transform 0.5s;
+}
+
+/*=============================================
+* OPCIONES PARA EL CONTENDEOR DE LIBROS DESTACADOS - [PANTALLAS GRANDES]
+*==============================================*/
+.div_destacado_md{
+	background-color: #dedede;
+	height: 150px;
+	z-index: 3;
+}
+
+.div_img_libro img:hover{
+	-webkit-animation: swing 1s ease;
+	animation: swing 1s ease;
+	-webkit-animation-iteration-count: 1;
+	animation-iteration-count: 1;
+	cursor: pointer;
 }
 
 .div_titulo_libro{
@@ -211,13 +311,8 @@
     cursor: pointer;
 }
 
-.div_flecha_derecha{
-	padding-top: 5%; right: 4.2%
-}
-
 .img_flecha_derecha{
 	cursor: pointer;
-	width: auto;
 }
 
 .img_flecha_derecha:hover{
@@ -239,6 +334,7 @@
 
 .img_carrito_libro{
 	cursor: pointer;
+	z-index: 4;
 }
 
 .img_carrito_libro:hover{
@@ -253,16 +349,69 @@
     cursor: pointer;
 }
 
-.centrar_img_libro img:hover{
-  -webkit-animation: swing 1s ease;
-animation: swing 1s ease;
--webkit-animation-iteration-count: 1;
-animation-iteration-count: 1;
-  cursor: pointer;
+/*=============================================
+* OPCIONES PARA EL CONTENDEOR DE LIBROS DESTACADOS - [PANTALLAS PEQUEÑAS]
+*==============================================*/
+.div_destacado_xs{
+	background-color: #b8978d;
+	border: 0px solid;
 }
 
-/*Opciones para la barra de navegación--------------------------------------*/
+.div_img_libro_xs{
+	position: relative;
+    height: 150px;
+}
 
+.div_libro_xs {
+    position: absolute;
+    top: -40%;
+}
+
+#autor_libro_destacado_xs{
+	font-size: 1em; 
+	width: 90%; 
+	padding-top: 70px; 
+	font-weight: normal; 
+	padding-left: 22px; 
+	color: #777777; 
+	position: absolute;
+}
+
+#titulo_libro_destacado_xs{
+	font-size: 1em; 
+	width: 90%; 
+	padding-top: 160px; 
+	font-weight: normal; 
+	padding-left: 22px; 
+	color: black; 
+	position: absolute;
+}
+
+#precio_libro_destacado_xs{
+	font-size: 1em; 
+	width: 90%; 
+	padding-top: 180px; 
+	font-weight: normal; 
+	padding-left: 22px; 
+	color: #777777; 
+	position: absolute;
+}
+
+.img_carrito_libro_xs{
+	width: 70%; 
+	padding-top: 183.31px; 
+	padding-left: 82px; 
+	position: absolute;
+	cursor: pointer;
+}
+
+/*==========================================================================================================
+* ---------------------------- OPCIONES PARA MODIFICAR CSS POR MEDIA QUERIES -------------------------------
+*===========================================================================================================*/
+
+/*=============================================
+* OPCIONES PARA PANTALLAS SUPERIORES A 992PX [COMPUTADORES] AQUI COLOCAR LAS OPCIONES PARA PANTALLAS GRANDES
+*==============================================*/
 @media screen and (min-width: 992px){
 
 	.contedor-medio{
@@ -273,18 +422,39 @@ animation-iteration-count: 1;
 		left: 10;
 		top: 50;
 	}
+
+	.lupa-buscar-libro{
+		left: 80%;
+	}
+
+	.lupa-buscar-autor{
+		left: 80%;
+	}
+
+	.img-select-genero{
+		left: 70%;
+	}
+
+	.show_pantalla_grande{
+		display: block !important;
+	}
+
+	.show_pantalla_pequeña{
+		display: none !important;
+	}
 }
-/*Opciones para pantallas inferiores a 992px*/
+
+/*=============================================
+* OPCIONES PARA PANTALLAS INFERIORES A 992PX [TABLETS] AQUI COLOCAR LAS OPCIONES PARA PANTALLAS MEDIANAS
+*==============================================*/
 @media screen and (max-width: 992px) {
 	
 	.texto-impresion-p{
-		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		font-size: 400%;
 		font-weight: bold;
 	}
 
 	.texto-demanda-p{
-		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		font-size: 350%;
 		font-weight: normal;
 		margin-top: -35px;
@@ -307,10 +477,44 @@ animation-iteration-count: 1;
 	.texto-intro-pantallas-sm{
 		display: block;º
 	}
+
+	.lupa-buscar-libro{
+		left: 90%;
+	}
+
+	.lupa-buscar-autor{
+		left: 90%;
+	}
+
+	.img-select-genero{
+		left: 90%;
+	}
+
+	.show_pantalla_grande{
+		display: none !important;
+	}
+
+	.show_pantalla_pequeña{
+		display: block !important;
+	}
+
+	.div_libro_xs {
+	    right: 330;
+	}
 }
 
-/*Opciones para pantallas superiores a 768px*/
+/*=============================================
+* OPCIONES PARA PANTALLAS SUPERIORES A 768PX
+*==============================================*/
 @media screen and (min-width: 768px){
+
+	.texto-label-nl{
+		color: black;
+		font-size: 24px;
+		font-weight: normal;
+		margin-right: 530px;
+	}
+
 	.show{
 		display: none !important;
 	}
@@ -324,8 +528,19 @@ animation-iteration-count: 1;
 	}
 }
 
-/*Opciones para pantallas inferiores a 767px*/
+/*=============================================
+* OPCIONES PARA PANTALLAS INFERIORES A 767PX [CELULARES] AQUI COLOCAR LAS OPCIONES PARA PANTALLAS PEQUEÑAS
+*==============================================*/
 @media screen and (max-width: 767px){
+
+	.texto-label-nl{
+		text-align: left;
+		color: black;
+		font-size: 24px;
+		font-weight: normal;
+		right: 1em;
+	}
+
 	.hide{
 		display: none !important;
 	}	
@@ -348,19 +563,35 @@ animation-iteration-count: 1;
 		top: 20;
 	}
 
+	.lupa-buscar-libro{
+		left: 85%;
+	}
+
+	.lupa-buscar-autor{
+		left: 85%;
+	}
+
+	.img-select-genero{
+		left: 85%;
+	}
+
+	.div_libro_xs {
+	    right: 150;
+	}
+
 }
 
-/*Opciones para pantallas inferiores a 768px*/
+/*=============================================
+* OPCIONES PARA PANTALLAS INFERIORES A 768PX
+*==============================================*/
 @media screen and (max-width: 768px) {
 	
 	.texto-impresion-p{
-		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		font-size: 300%;
 		font-weight: bold;
 	}
 
 	.texto-demanda-p{
-		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		font-size: 300%;
 		font-weight: normal;
 		margin-top: -30px;
@@ -385,8 +616,30 @@ animation-iteration-count: 1;
 
 }
 
-/*Opciones para pantallas inferiores a 480px*/
+/*=============================================
+* OPCIONES PARA PANTALLAS SUPERIORES A 481PX
+*==============================================*/
+@media screen and (min-width: 481px){
+	.mostrar{
+		display: none !important;
+	}
+
+	.ocultar{
+		display: block !important;
+	}
+}
+
+/*=============================================
+* OPCIONES PARA PANTALLAS INFERIORES A 480PX 
+*==============================================*/
 @media screen and (max-width: 480px){
+
+	/*.texto-label-nl{
+		color: black;
+		font-size: 24px;
+		font-weight: normal;
+		right: 87px;
+	}*/
 
 	.texto-peque img{
 		width: 200px;
@@ -401,14 +654,12 @@ animation-iteration-count: 1;
 
 	.texto-impresion-p{
 		text-align: right;
-		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		font-size: 200%;
 		font-weight: bold;
 	}
 
 	.texto-demanda-p{
 		text-align: right;
-		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		font-size: 200%;
 		font-weight: normal;
 		margin-top: -20px;
@@ -426,14 +677,13 @@ animation-iteration-count: 1;
 
 	.contenedor-impresion{
         left: -10px;
-        width: 106%;
-		height: 100%;	
+		height: 20%;	
 		background-image: url("../images/Seccion-libro_02-sm.png");
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 		text-align: right;
-		min-height: 175px;
-		max-height: 175px;
+		min-height: 150px;
+		max-height: 1px;
 	}
 
 	.texto{
@@ -442,34 +692,9 @@ animation-iteration-count: 1;
 	
 }
 
-@media screen and (min-width: 481px){
-	.mostrar{
-		display: none !important;
-	}
-
-	.ocultar{
-		display: block !important;
-	}
-}
-
-.opcion-img img{
-	width: 90%;
-}
-
-.opcion-img img:hover{
-	transform : scale(1.1);	
-    -moz-transform : scale(1.1);       /*Firefox*/ 
-    -webkit-transform : scale(1.1);    /*Chrome - Safari*/ 
-    -o-transform : scale(1.1);         /*Opera */
-    transition: width 0.5s, height 0.5s, transform 0.5s;
-    -moz-transition: width 0.5s, height 0.5s, -moz-transform 0.5s;
-    -webkit-transition: width 0.5s, height 0.5s, -webkit-transform 0.5s;
-    -o-transition: width 0.5s, height 0.5s,-o-transform 0.5s;
-    cursor: pointer;
-}
-
-/*vamos a definir en primer lugar una animación CSS en sus estilos.*/
-
+/*=============================================
+* VAMOS A DEFINIR EN PRIMER LUGAR UNA ANIMACION CSS EN SUS ESTILOS
+*==============================================*/
 @-webkit-keyframes swing
 {
 15%
@@ -536,7 +761,3 @@ transform: translateX(2px);
 transform: translateX(0);
 }
 }
-
-
-
-

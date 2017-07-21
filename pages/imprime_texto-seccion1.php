@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="../dist/css/bootstrap-submenu.min.css">
 	<script src="../js/funsubmenu.js"></script>
 	<script src="../dist/js/bootstrap-submenu.min.js" defer></script>
+	<script src="../javascript/script_btn_login.js"></script>
 
 	<script type="text/javascript">
 
@@ -36,6 +37,8 @@
 			var costo5=0;
 			// Valor N caras
 			var costo6=0;
+			//Unidades
+			var unidad = 0;
 
 			function actualizar(){
 				sumando = costo1 + costo2 + costo3 + costo4 + costo5 + costo6;
@@ -47,6 +50,7 @@
 					$('#valor'+(i+1)).val(valor);
 					$('#valor'+(i+1)).html(valor);
 				}
+				$("#total").text(sumando*unidad);
 			}
 
 			$("input[name=tamanio]:radio" ).change(function(){
@@ -121,6 +125,11 @@
 				actualizar();
 			});
 
+			$("input[name=unidades]:radio").change(function(){
+				unidad = this.value;
+				actualizar();
+			});
+
 		});
 	</script>
 	
@@ -136,7 +145,7 @@
 					<div class="navbar-header">
 						<a href="../index.html" class="navbar-brand imagen-barra navbar-fixed-top">
 					    	<img class="ocultar-nav" alt="Brand" src="../images/Cuadrado Barra de Herramientas.png">
-					    	<img class="mostrar-nav" alt="Brand" src="../images/barra pequeña.png">
+					    	<img class="mostrar-nav" alt="Brand" src="../images/barra_pequena.png">
 					    </a>
 						<button type="button" class="navbar-toggle collapsed navbar-fixed-top" data-toggle="collapse" data-target="#navbar-1">
 							<span class="sr-only">Menu</span>
@@ -155,7 +164,7 @@
 							<li class="mov"><a href="#">Juegos</a></li>
 							<li class="mov"><a href="#">Software</a></li>
 							<li class="mov"><a href="#">Conócenos</a></li>	
-							<li><a class="imagen-carro" href="#">
+							<li><a class="imagen-carro" href="carrito_compras.php">
 							    	<img alt="Brand" src="../images/Carro.png">
 							    </a>
 						    </li>	
@@ -163,8 +172,8 @@
 					</div>
 
 
-					<div class="container navbar-fixed-top">
-						<a href="../index.html">
+					<div class="container navbar-fixed-top"><a href="imprime_texto.html"><div class="btn-atras" title="Atras"></div></a>
+						<a href="../index.html"><div class="imagen"></div>
 							<div class="referencia-index col-sm-3 col-md-3"></div>
 						</a>
 						<ul class="col-sm-9 col-md-9 hide nav navbar-nav  navbar-right">
@@ -174,7 +183,7 @@
 								<li><a href="#"><label class="opcion-nav">Juegos</label></a></li>
 								<li><a href="#"><label class="opcion-nav">Software</label></a></li>
 								<li><a href="#"><label class="opcion-nav">Conócenos</label></a></li>
-								<li><a class="navbar-brand imagen-carro" href="#">
+								<li><a class="navbar-brand imagen-carro" href="carrito_compras.php">
 								    	<img alt="Brand" src="../images/Carro.png">
 								    </a>
 							    </li>		
@@ -208,9 +217,9 @@
 	<center>
 	<div class="container">
 		<div class="row contenedor-medio">
-			<div class="hide opcion-img col-xs-12 col-sm-3 col-md-3"><br><br><br><center><img src="../images/impresion-d-1.jpg"></center></div>
+			<div class="col-xs-12 col-sm-3 col-md-3"><center><div class="opcion-img"><img  src="../images/impresion-d-1.jpg"></div></center></div>
 
-			<div class="col-xs-12 col-sm-6 col-md-6"><br>
+			<div class="col-xs-12 col-sm-6 col-md-6"><div class="show"><br><br><br><br></div>
 				<div class="contenedor-especificaciones col-xs-12">
 					<label class="texto-especificaciones1">Escoge las especificaciones de tus productos</label>
 
@@ -255,7 +264,7 @@
 						<table class="table table-striped tabla">
 							<tr>
 								<td>
-									<label id="valorUnidad1" class="radio-inline"><input type="radio" id="unidades1" name="unidades" value="1">8</label><label>&nbsp; uds</label>
+									<label id="valorUnidad1" class="radio-inline"><input type="radio" id="unidades1" name="unidades" value="8">8</label><label>&nbsp; uds</label>
 								</td>
 								<td>
 									<label class="texto-especificaciones1" id="valor1">10.000</label><label class="texto-especificaciones1">$</label>
@@ -263,7 +272,7 @@
 							</tr>
 							<tr>
 								<td>
-									<label id="valorUnidad2" class="radio-inline"><input type="radio" id="unidades2" name="unidades" value="2">16 </label><label>&nbsp; uds</label>
+									<label id="valorUnidad2" class="radio-inline"><input type="radio" id="unidades2" name="unidades" value="16">16 </label><label>&nbsp; uds</label>
 								</td>
 								<td>
 									<label class="texto-especificaciones1" id="valor2">20.000</label><label class="texto-especificaciones1">$</label>
@@ -271,7 +280,7 @@
 							</tr>
 							<tr>
 								<td>
-									<label id="valorUnidad3" class="radio-inline"><input type="radio" id="unidades3" name="unidades" value="3">25 </label><label>&nbsp; uds</label>
+									<label id="valorUnidad3" class="radio-inline"><input type="radio" id="unidades3" name="unidades" value="25">25 </label><label>&nbsp; uds</label>
 								</td>
 								<td>
 									<label class="texto-especificaciones1" id="valor3">40.000</label><label class="texto-especificaciones1">$</label>
@@ -279,7 +288,7 @@
 							</tr>
 							<tr>
 								<td>
-									<label id="valorUnidad4" class="radio-inline"><input type="radio" id="unidades4" name="unidades" value="4">50 </label><label>&nbsp; uds</label>
+									<label id="valorUnidad4" class="radio-inline"><input type="radio" id="unidades4" name="unidades" value="50">50 </label><label>&nbsp; uds</label>
 								</td>
 								<td>
 									<label class="texto-especificaciones1" id="valor4">50.000</label><label class="texto-especificaciones1">$</label>
@@ -287,7 +296,7 @@
 							</tr>
 							<tr>
 								<td>
-									<label id="valorUnidad5" class="radio-inline"><input type="radio" id="unidades5" name="unidades" value="5">100 </label><label>&nbsp; uds</label>
+									<label id="valorUnidad5" class="radio-inline"><input type="radio" id="unidades5" name="unidades" value="100">100 </label><label>&nbsp; uds</label>
 								</td>
 								<td>
 									<label class="texto-especificaciones1" id="valor5">70.000</label><label class="texto-especificaciones1">$</label>
@@ -295,7 +304,7 @@
 							</tr>
 							<tr>
 								<td>
-									<label id="valorUnidad6" class="radio-inline"><input type="radio" id="unidades6" name="unidades" value="6">1000 </label><label>&nbsp; uds</label>
+									<label id="valorUnidad6" class="radio-inline"><input type="radio" id="unidades6" name="unidades" value="1000">1000 </label><label>&nbsp; uds</label>
 								</td>
 								<td>
 									<label class="texto-especificaciones1" id="valor6">100.000</label><label class="texto-especificaciones1">$</label>
@@ -306,7 +315,7 @@
 					</form>
 					<p>Adjunta tu diseño antes de finalizar la <br> compra. <a href="" style="color: black;"><b>indicaciones aqui.</b></a></p>
 					<div class="texto-total">
-						<label>TOTAL &nbsp;</label><label>50.000</label><label>$</label>
+						<label>TOTAL &nbsp;</label><label id='total'>0</label><label>$</label>
 					</div>
 					<button class="btn boton1"><label >Imprimir</label></button>
 				</center>
@@ -318,22 +327,7 @@
 		<br><br><br><br><br>
    
    <footer class="pie">
-   <br>
-   	<center>
-		<div class="container-fluid">
-			<div class="row redes">
-				<div class="col-xs-12 col-md-4"></div>
-				<div class="contenedor-redes col-xs-12 col-md-4">
-					<a href="http://www.facebook.com"><img src="../images/facebook uso.png" title="Facebook"></a>&nbsp
-					<a href="#"><img src="../images/twitter uso.png" title="Twitter"></a>&nbsp
-					<a href="#"><img src="../images/GooglePlus uso.png" title="GooglePlus"></a>&nbsp
-					<a href="#"><img src="../images/linkedin uso.png" title="Linkedin"></a>
-				</div>
-				<div class="col-xs-12 col-md-4"></div>
-			</div>
-		</div>
-	</center>
-		
+   <br>	
 		<!-- Mapa del sitio pantallas pequeñas -->
 		<div class="container-fluid hide-mapa">
 			<div class="row">
@@ -447,6 +441,15 @@
    	<div class="esconder-espacios">
 		<br><br>
 	</div>
+	<div class="redes-sociales"></div>
+   	<div class="redes-sociales-c">
+   		<a href="#"><div id="f" class="red" title="Facebook"></div></a>
+   		<a href="#"><div id="t" class="red" title="Twitter"></div></a>
+   		<a href="#"><div id="g" class="red" title="Google+"></div></a>
+   		<a href="#"><div id="l" class="red" title="Linkedin"></div></a>
+   	</div>
+   	
+   	<script src="../javascript/script_redes.js"></script>
 </body>
 </html>
 

@@ -1,3 +1,42 @@
+.login{
+	background-image: url("../images/login.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 70px;
+	height: 70px;
+}
+.logout{
+	background-image: url("../images/logout.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.login, .logout{
+	width: 35px;
+	height: 35px;
+}
+
+.imagen{
+	position: fixed;
+	top: 1%;
+	right: 1%;
+	width: 40px;
+	height: 40px;
+	filter: grayscale(100%);
+}
+
+@media screen and (max-width: 767px){
+	.imagen{
+		right: 13%;
+	}
+}
+
+@media screen and (max-width: 480px){
+	.imagen{
+		right: 19%;
+	}
+}
+
 .navbar-color{
 	background-color: white;
 }
@@ -24,6 +63,12 @@
 	background-color: #ECE7E4;
 }
 
+.btn-atras{
+	background-image: url("../images/back-btn.png");
+	background-repeat: no-repeat;
+}
+
+
 @media screen and (min-width: 992px){
 	.opcion-nav{
 		font-size: 22;
@@ -32,6 +77,15 @@
 
 /*Barra Principal para Pantallas pequeñas*/
 @media screen and (max-width: 767px){
+
+	.btn-atras{
+		position: fixed;
+		top: 0%;
+		left: 50%;
+		width: 40px;
+		height: 40px;
+	}
+
 	.show-menu{
 		display: block !important;
 	}
@@ -64,6 +118,14 @@
 }
 
 @media screen and (min-width: 768px){
+
+	.btn-atras{
+		position: fixed;
+		top: 0%;
+		left: 1%;
+		width: 50px;
+		height: 50px;
+	}
 
 	.show-menu{
 		display: none !important;

@@ -48,6 +48,23 @@
 	width: 50%;
 }
 
+.texto-head-form{
+	font-size: 20;
+	color: black;
+}
+
+.check-opcion{
+	
+	border-bottom:2px solid;
+	border-color: #77472F;
+}
+.check-opcion label{
+	left: 40%;
+}
+
+.cont{
+	width: 60%;
+}
 /*--------------------------------------------------------------------------*/
 /*Opciones para el texto y tamaño límite de la imagen principal---------------------------------------*/
 
@@ -110,6 +127,10 @@
 
 	.texto{
 		font-size: 22;
+	}
+
+	.texto-head-form{
+		font-size: 17;
 	}
 }
 
@@ -175,6 +196,14 @@
 		font-size: 17;
 	}
 
+	.texto-head-form{
+		font-size: 15;
+	}
+
+	.cont{
+		width: 90%;
+	}
+
 }
 
 /*Opciones para pantallas inferiores a 480px*/
@@ -228,7 +257,10 @@
 	.texto{
 		font-size: 14;
 	}
-	
+
+	.texto-head-form{
+		font-size: 10;
+	}
 }
 
 @media screen and (min-width: 481px){

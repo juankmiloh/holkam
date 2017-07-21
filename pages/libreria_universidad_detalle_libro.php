@@ -24,8 +24,11 @@
 
 	<script type="text/javascript" src="../javascript/script_libreria_universidad.js"></script>
 </head>
+
+<!-- Impide seleccionar, arrastrar y dar click derecho -->
 <body oncontextmenu="return true" onselectstart="return false" ondragstart="return false"> 
 
+<!-- ng-controler se usa para permitir el uso de -->
 <div class="container-fluid" ng-controller="FirstController">
 	<header>
 		<div class="container">
@@ -34,7 +37,7 @@
 					<div class="navbar-header">
 						<a href="../index.html" class="navbar-brand imagen-barra navbar-fixed-top">
 					    	<img class="ocultar-nav" alt="Brand" src="../images/Cuadrado Barra de Herramientas.png">
-					    	<img class="mostrar-nav" alt="Brand" src="../images/barra pequeña.png">
+					    	<img class="mostrar-nav" alt="Brand" src="../images/barra_pequena.png">
 					    </a>
 						<button type="button" class="navbar-toggle collapsed navbar-fixed-top" data-toggle="collapse" data-target="#navbar-1">
 							<span class="sr-only">Menu</span>
@@ -54,7 +57,7 @@
 							<li class="mov"><a href="#">Software</a></li>
 							<li class="mov"><a href="#">Conócenos</a></li>	
 							<li>
-								<a class="imagen-carro" href="#">
+								<a class="imagen-carro" href="carrito_compras.php">
 							    	<img alt="Brand" src="../images/Carro.png">
 							    </a>
 						    </li>	
@@ -62,7 +65,7 @@
 					</div>
 
 
-					<div class="container navbar-fixed-top">
+					<div class="container navbar-fixed-top"><a href="libreria_universitaria.html"><div class="btn-atras" title="Atras"></div></a>
 						<a href="../index.html">
 							<div class="referencia-index col-sm-3 col-md-3"></div>
 						</a>
@@ -74,7 +77,7 @@
 							<li><a href="#"><label class="opcion-nav">Software</label></a></li>
 							<li><a href="#"><label class="opcion-nav">Conócenos</label></a></li>
 							<li>
-								<a class="navbar-brand imagen-carro" href="#">
+								<a class="navbar-brand imagen-carro" href="carrito_compras.php">
 							    	<img alt="Brand" src="../images/Carro.png">
 							    </a>
 						    </li>		
@@ -149,50 +152,9 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-xs-12 col-md-12" style="text-align: center;">
-        	<br><br>
-        	<label class="texto">Destacados</label>
-        	<br><br><br><br><br><br>
-        </div>
-	</div>
-
-	<div class="row contenedor_libros_destacados">
-		<div class="col-xs-12 col-md-4"></div>
-        <div class="col-xs-12 col-md-4">
-        	<div class="row">
-        		<div class="col-xs-12 col-md-3 div_flecha_izquierda" style="padding-top: 5%;">
-        			<img src="../images/libro_left1.png" class="img_flecha_izquierda" width="auto">
-        		</div>
-        		<div class="col-xs-12 col-md-6">
-        			<div class="row">
-	        			<div class="col-xs-12 col-md-12 div_img_libro">
-	        				<div class="centrar_img_libro">
-		        				<img src="" id="img_libro_destacado" class="">
-		        			</div>
-	        			</div>
-	        			<br><br><br><br><br><br><br><br><br><br><br><br>	        			
-        				<div class="col-xs-12 col-md-7 div_titulo_libro">
-        					<p id="titulo_libro_destacado"></p>
-        					<p id="precio_libro_destacado" style="color: gray;"></p>
-        					<input type="hidden" id="consecutivo_libro_destacado" name="">
-        				</div>
-        				<div class="col-xs-12 col-md-5">
-        					<img src="../images/Libreria_15.png" class="img_carrito_libro">
-        				</div>
-        			</div>
-        		</div>
-        		<div class="col-xs-12 col-md-3 div_flecha_derecha">
-        			<img src="../images/libro_right1.png" class="img_flecha_derecha">
-        		</div>
-        	</div>
-        </div>
-        <div class="col-xs-12 col-md-4"></div>
-	</div>
-
 	<div id="div_focalizar"></div>
 
-	<br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br>
 
 	<div>
 		<div class="row">
@@ -232,10 +194,83 @@
 			<div class="col-xs-12 col-md-1">
 				<img src="../images/division_libros.png" style="height: 140%; width: 9%;">
 			</div>
+
 			<div class="col-xs-12 col-md-7">
 				<div class="row">
+					<div class="col-xs-12 col-md-12" style="height: 75%;">
+						<?php
+							include ("../conexion_bd/conexion_BD.php");
+							$codigo_libro = $_GET['id'];
+							//echo $codigo_libro;
+							//generamos la consulta
+							$sql = "SELECT l.consecutivo,l.k_codlibro,l.n_titulo,l.n_autor,l.v_cod_isbn,l.n_editorial,l.v_num_pagina,l.v_precio,fl.n_fotografia FROM libro l, libro_fotografia fl WHERE l.k_codlibro=".$codigo_libro." AND l.k_codlibro=fl.k_codlibro";
+
+							mysqli_set_charset($con, "utf8"); //formato de datos utf8
+
+							if(!$result = mysqli_query($con, $sql)) die();
+
+							$valores_libro = array(); //creamos un array
+
+							while($row = mysqli_fetch_array($result)){ 
+								$consecutivo = $row['consecutivo'];
+							    $k_codlibro = $row['k_codlibro'];
+							    $n_titulo = $row['n_titulo'];
+							    $n_autor = $row['n_autor'];
+							    $v_cod_isbn = $row['v_cod_isbn'];
+							    $n_editorial = $row['n_editorial'];
+							    $v_num_pagina = $row['v_num_pagina'];
+							    $v_precio = $row['v_precio'];
+							    $n_fotografia = $row['n_fotografia'];
+							}
+							    
+							//desconectamos la base de datos
+							$close = mysqli_close($con) or die("Ha sucedido un error inexperado en la desconexion de la base de datos");
+						?>
+						<span style="color: black; font-weight: bold; font-size: x-large;"><?php echo $n_titulo; ?></span><br>
+						<span style="color: black;">Erotico / Romance / Drama</span><br><br><br>
+						<div class="row">
+							<div class="col-xs-12 col-md-4">
+								<img src="../imagenes_libro/<?php echo $n_fotografia; ?>">	
+							</div>
+							<div class="col-xs-12 col-md-8">
+								<br><br><br><br><br><br><br>
+								<span style="color: black; font-weight: bold; font-size: xx-large;"><?php echo $v_precio; ?>$</span><br>
+								<span style="color: black; font-weight: bold; font-size: large;">Autor: <?php echo $n_autor; ?></span><br>
+								<span style="color: black; font-weight: bold; font-size: large;">Editorial: <?php echo $n_editorial; ?></span><br>
+								<span style="color: black; font-weight: bold; font-size: large;">Año de edicion:  2016</span><br>
+								<span style="color: black; font-weight: bold; font-size: large;">Nº Páginas: <?php echo $v_num_pagina; ?></span><br>
+								<span style="color: black; font-weight: bold; font-size: large;">Formato: Impreso</span><br>
+							</div>
+	        				<div class="col-xs-12 col-md-12">
+	        					<br>
+	        					<img id="{{post.k_codlibro}}" src="../images/btn-comprar.png" class="img_carrito_libro" data-ng-click="obtenerId($event)" title="agregar al carrito">
+	        				</div>
+	        				<div class="col-xs-12 col-md-8">
+	        					<br>
+	        					<p style="color:black; text-align: justify; font-size: large;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam venenatis lacus justo. Nulla vulputate mollis hendrerit. Etiam id condimentum urna, in tempor ex. Nam tincidunt lacinia diam at rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam ullamcorper, purus pharetra fringilla lacinia, nunc lorem laoreet nulla, id convallis nisl lorem quis magna. Phasellus sed eros hendrerit, mattis nisl vel, imperdiet est.</p>
+	        				</div>
+	        				<div class="col-xs-12 col-md-8"></div>
+	        				<div class="col-xs-12 col-md-12">
+	        					<img src="../images/relacionados.png">
+	        				</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-1"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-md-12">
+					<br><br><br><br><br><br><br>
+					<img src="../images/medios_pago.png">
+				</div>
+			</div>
+
+
+			<!-- <div class="col-xs-12 col-md-7">
+				<div class="row">
 					<div class="col-xs-12 col-md-4" ng-repeat="post in posts" style="height: 75%;">
-		        		<img src="../imagenes_libro/{{post.n_fotografia}}" style="cursor: pointer;">	  
+		        		<img id="{{post.k_codlibro}}" src="../imagenes_libro/{{post.n_fotografia}}" style="cursor: pointer;" data-ng-click="detalle_libro($event)">	  
 		        		<div class="row">
 		        			<br>
 		        			<div class="col-xs-12 col-md-7 div_titulo_libro">
@@ -244,14 +279,15 @@
 	        					<input type="hidden" value="{{post.consecutivo}}">
 	        				</div>
 	        				<div class="col-xs-12 col-md-5">
-	        					<img id="{{post.k_codlibro}}" data-ng-click="probando($event)" src="../images/Libreria_15.png" class="img_carrito_libro">
+	        					<img id="{{post.k_codlibro}}" src="../images/Libreria_15.png" class="img_carrito_libro" data-ng-click="obtenerId($event)" title="agregar al carrito">
 	        				</div>
 						</div>
 					</div>
 				</div>
-			<div class="col-xs-12 col-md-1"></div>
-			</div>
+				<div class="col-xs-12 col-md-1"></div>
+			</div> -->
 		</div>
+	</div>
 
 	<br><br><br><br><br><br><br>
    

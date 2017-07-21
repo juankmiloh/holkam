@@ -1,12 +1,13 @@
 <?php
 	header("access-control-allow-origin: *");
+	header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
 	include ("../conexion_bd/conexion_BD.php");
 
 	$consecutivo = $_POST['consecutivo'];
 
 	//generamos la consulta
-	$sql = "SELECT l.*,fl.n_fotografia FROM holkam_libro l,holkam_fotografia_libro fl WHERE l.k_codlibro=fl.k_codlibro";
+	$sql = "SELECT l.*,fl.n_fotografia FROM libro l,libro_fotografia fl WHERE l.k_codlibro=fl.k_codlibro";
 	mysqli_set_charset($con, "utf8"); //formato de datos utf8
 
 	if(!$result = mysqli_query($con, $sql)) die();
@@ -17,6 +18,8 @@
 		$consecutivo = $row['consecutivo'];
 	    $k_codlibro = $row['k_codlibro'];
 	    $n_titulo = $row['n_titulo'];
+	    $n_autor = $row['n_autor'];
+	    $o_genero = $row['o_genero'];
 	    $v_cod_isbn = $row['v_cod_isbn'];
 	    $n_editorial = $row['n_editorial'];
 	    $v_num_pagina = $row['v_num_pagina'];
@@ -26,6 +29,8 @@
 	    $valores_libros[] = array('consecutivo'=> $consecutivo,
 	    						  'k_codlibro'=> $k_codlibro,
 				           		  'n_titulo'=> $n_titulo,
+				           		  'n_autor'=> $n_autor,
+				           		  'o_genero'=> $o_genero,
 				           		  'v_cod_isbn'=> $v_cod_isbn,
 				           		  'n_editorial'=> $n_editorial,
 				           		  'v_num_pagina'=> $v_num_pagina,

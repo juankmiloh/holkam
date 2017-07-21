@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="../dist/css/bootstrap-submenu.min.css">
 	<script src="../js/funsubmenu.js"></script>
 	<script src="../dist/js/bootstrap-submenu.min.js" defer></script>
+	<script src="../javascript/script_btn_login.js"></script>
 	
 </head>
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false"> 
@@ -30,7 +31,7 @@
 					<div class="navbar-header">
 						<a href="../index.html" class="navbar-brand imagen-barra navbar-fixed-top">
 					    	<img class="ocultar-nav" alt="Brand" src="../images/Cuadrado Barra de Herramientas.png">
-					    	<img class="mostrar-nav" alt="Brand" src="../images/barra pequeña.png">
+					    	<img class="mostrar-nav" alt="Brand" src="../images/barra_pequena.png">
 					    </a>
 						<button type="button" class="navbar-toggle collapsed navbar-fixed-top" data-toggle="collapse" data-target="#navbar-1">
 							<span class="sr-only">Menu</span>
@@ -50,7 +51,7 @@
 							<li class="mov"><a href="#">Software</a></li>
 							<li class="mov"><a href="#">Conócenos</a></li>	
 							<li>
-								<a class="imagen-carro" href="#">
+								<a class="imagen-carro" href="carrito_compras.php">
 							    	<img alt="Brand" src="../images/Carro.png">
 							    </a>
 						    </li>	
@@ -58,8 +59,8 @@
 					</div>
 
 
-					<div class="container navbar-fixed-top">
-						<a href="../index.html">
+					<div class="container navbar-fixed-top"><a href="libreria.html"><div class="btn-atras" title="Atras"></div></a>
+						<a href="../index.html"><div class="imagen"></div>
 							<div class="referencia-index col-sm-3 col-md-3"></div>
 						</a>
 						<ul class="col-sm-9 col-md-9 hide nav navbar-nav  navbar-right">
@@ -70,7 +71,7 @@
 							<li><a href="#"><label class="opcion-nav">Software</label></a></li>
 							<li><a href="#"><label class="opcion-nav">Conócenos</label></a></li>
 							<li>
-								<a class="navbar-brand imagen-carro" href="#">
+								<a class="navbar-brand imagen-carro" href="carrito_compras.php">
 							    	<img alt="Brand" src="../images/Carro.png">
 							    </a>
 						    </li>		
@@ -82,84 +83,63 @@
 	</header>
 
 	<!-- COLOCAR ESTE CODIGO DENTRO DE LAS ETIQUETAS ROW EN LAS OTRAS PAGINAS -->
-	<div class="row">
-		<div class="contenedor-impresion col-xs-12 col-sm-12 col-md-12">
-			<div class="col-xs-6 col-sm-5 col-md-4"></div>
-			<div class="contenedor-tendencias-moda col-xs-6 col-sm-7 col-md-7">
-				<br class="ocultar"><br class="hide mostrar"><br class="hide mostrar"><br class="ocultar"><br class="ocultar"><br class="ocultar"><br class="hide">
-				<!-- <label class="texto-impresion-p">Librería</label><br class="">
-				<label class="texto-demanda-p">Universitaria</label> -->
-			</div>
-			<div class="col-xs-8 col-sm-5 col-md-1"></div>
+	<div class="row contenedor-impresion">
+		<div class="col-xs-6 col-sm-5 col-md-4"></div>
+		<div class="contenedor-tendencias-moda col-xs-6 col-sm-7 col-md-7">
+			<br class="ocultar"><br class="hide mostrar"><br class="hide mostrar"><br class="ocultar"><br class="ocultar"><br class="ocultar"><br class="hide">
+			<!-- <label class="texto-impresion-p">Librería</label><br class="">
+			<label class="texto-demanda-p">Universitaria</label> -->
 		</div>
+		<div class="col-xs-8 col-sm-5 col-md-1"></div>
 	</div>
 	
 	<div class="container texto">
 		<div class="row">
 			<center>
 				<div class="col-xs-12 col-sm-12 col-md-12"><span><br><p>Los <b>mejores títulos universitarios </b>a tu alcance,<br>
-				<b>desde la comodidad de tu casa.</b></p><br><br></span></div>
+				<b>desde la comodidad de tu casa.</b></p><br></span></div>
 			</center>	
 		</div>
 	</div>
-	
-	
-
-	<br>
 
 	<div class="container texto-grande">
 		<div class="row">
 			<center>
-				<div class="col-xs-12 col-sm-12 col-md-12"><span><img src="../images/seccion1-lib-universitaria.png"><br><br></span></div>
-			</center>	
+				<br><br><br>
+				<div class="col-xs-12 col-sm-12 col-md-12"><span><img src="../images/seccion1-lib-universitaria.png"></span></div>
+			</center>
 		</div>
 	</div>
 
-	<div class="container texto-peque">
+	<div class="texto-peque">
 		<div class="row">
 			<center>
-				<div class="col-xs-12 col-sm-12 col-md-12"><span><br><img src="../images/seccion1-lib-universitaria-sm.png"></span></div>	
+				<div class="col-xs-12 col-sm-12 col-md-12"><span><br><img src="../images/seccion1-lib-universitaria-sm.png" class="img-responsive"></span></div>
 			</center>
 		</div>
 	</div>
 	
 	<br><br>
 
-	<div class="container-fluid">
-		<center>
-			<div class="contenedor-select row">
-				<div class="col-xs-12 col-sm-12 col-md-12">
-					<label id="label_universidades" class="label-select texto-select">Elige tu universidad</label>
-			        <select id="select_universidades" class="form-control select" name="select_universidades" required onchange="cambiar_option(this);">
-			        	<option value="0">---- Seleccione ----</option>
-			            <option value="1">Universidad Distrital Francisco José de Caldas</option>
-			            <option value="2">Universidad Nacional de Colombia</option>
-			            <option value="3">Pontificia Universidad Javeriana</option>
-			        </select>
-				</div>
+	<center>
+		<div class="row contenedor-select">
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<label id="label_universidades" class="label-select texto-select">Elige tu universidad</label>
+		        <select id="select_universidades" class="form-control select" name="select_universidades" required onchange="cambiar_option(this);">
+		        	<option value="0">---- Seleccione ----</option>
+		            <option value="1">Universidad Distrital Francisco José de Caldas</option>
+		            <option value="2">Universidad Nacional de Colombia</option>
+		            <option value="3">Pontificia Universidad Javeriana</option>
+		        </select>
 			</div>
-		</center>	
-	</div>
+		</div>
+	</center>
 
 	<br><br><br><br><br><br><br><br><br>
    
    <footer class="pie">
    <br>
-   	<center>
-		<div class="container-fluid">
-			<div class="row redes">
-				<div class="col-xs-12 col-md-4"></div>
-				<div class="contenedor-redes col-xs-12 col-md-4">
-					<a href="http://www.facebook.com"><img src="../images/facebook uso.png" title="Facebook"></a>&nbsp
-					<a href="#"><img src="../images/twitter uso.png" title="Twitter"></a>&nbsp
-					<a href="#"><img src="../images/GooglePlus uso.png" title="GooglePlus"></a>&nbsp
-					<a href="#"><img src="../images/linkedin uso.png" title="Linkedin"></a>
-				</div>
-				<div class="col-xs-12 col-md-4"></div>
-			</div>
-		</div>
-	</center>
-		
+   		
 		<!-- Mapa del sitio pantallas pequeñas -->
 		<div class="container-fluid hide-mapa">
 			<div class="row">
@@ -270,6 +250,15 @@
 		</div>
 	</footer>
    	<br><br>
+   	<div class="redes-sociales"></div>
+   	<div class="redes-sociales-c">
+   		<a href="#"><div id="f" class="red" title="Facebook"></div></a>
+   		<a href="#"><div id="t" class="red" title="Twitter"></div></a>
+   		<a href="#"><div id="g" class="red" title="Google+"></div></a>
+   		<a href="#"><div id="l" class="red" title="Linkedin"></div></a>
+   	</div>
+   	
+   	<script src="../javascript/script_redes.js"></script>
 </body>
 </html>
 

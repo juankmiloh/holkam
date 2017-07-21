@@ -24,9 +24,8 @@
 
 .contenedor-impresion{
 	left: -10px;
-	margin-top: 45px;	
-	width: 101%;
-	height: 100%;
+	margin-top: 45px;
+	height: 60%;
 	background-image: url("../images/seccion-libreria-universitaria.png");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
@@ -43,7 +42,7 @@
 }
 
 .texto{
-	font-family: "Myriad Pro";
+	/*font-family: "Myriad Pro";*/
 	font-size: 25;
 	color: black;
 }
@@ -152,7 +151,7 @@
 	}
 
 	.texto{
-		font-size: 22;
+		font-size: 20;
 	}
 }
 
@@ -230,13 +229,44 @@
 		font-size: 17;
 	}
 
+	.contenedor-select{
+		background: url('../images/img_select_universidad_sm.png');
+		height: 33px;
+		width: 310px;
+		cursor: pointer;
+	}
+
+	.select{
+		opacity: 0;
+		height: 34px;
+		cursor: pointer;
+	}
+
+	.label-select{
+		border: 0px solid;
+		height: 33px;
+		width: 300px;
+		padding-top: 0px;
+		position:absolute;
+		z-index:0;
+	}
+
+	.texto-select{
+		text-align: left;
+		color: black;
+		font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size: 20px;
+		font-weight: normal;
+		left: 30px;
+	}
+
 }
 
 /*Opciones para pantallas inferiores a 480px*/
 @media screen and (max-width: 480px){
 
 	.texto-peque img{
-		width: 200px;
+		width: 300px;
 		/*height: 70px;*/
 	}
 
@@ -272,19 +302,17 @@
 
 
 	.contenedor-impresion{
-        left: -10px;
-        width: 106%;
-		height: 100%;	
-		background-image: url("../images/seccion-librerias-sm.png");
+        left: -10px;	
+		background-image: url("../images/seccion-libreria-universitaria.png");
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 		text-align: right;
-		min-height: 175px;
-		max-height: 175px;
+		min-height: 150px;
+		max-height: 1px;
 	}
 
 	.texto{
-		font-size: 14;
+		font-size: 12;
 	}
 	
 }

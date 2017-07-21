@@ -14,7 +14,7 @@
 	//echo $nombre_libro;
 
 	//generamos la consulta
-	$sql = "SELECT l.consecutivo,l.k_codlibro,l.n_titulo,l.v_cod_isbn,l.n_editorial,l.v_num_pagina,l.v_precio,fl.n_fotografia FROM holkam_libro l, holkam_fotografia_libro fl WHERE l.n_titulo LIKE '%".$nombre_libro."%' AND l.k_codlibro=fl.k_codlibro";
+	$sql = "SELECT l.consecutivo,l.k_codlibro,l.n_titulo,l.v_cod_isbn,l.n_editorial,l.v_num_pagina,l.v_precio,fl.n_fotografia FROM libro l, libro_fotografia fl WHERE l.n_titulo LIKE '%".$nombre_libro."%' AND l.k_codlibro=fl.k_codlibro";
 
 	mysqli_set_charset($con, "utf8"); //formato de datos utf8
 

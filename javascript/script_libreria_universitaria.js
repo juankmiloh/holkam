@@ -14,6 +14,6 @@ function cambiar_option(select) {
 
 	/* Se redirecciona a la pagina de la libreria de la universidad */
 	if (codigo_option != 0) {
-		location.href="./libreria_universidad.html?cod_universidad="+codigo_option;
+		location.href="./libreria_universidad.php?cod_universidad="+codigo_option;
 	}
 }

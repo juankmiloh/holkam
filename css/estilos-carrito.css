@@ -1,0 +1,125 @@
+
+.contenedor-carrito{
+	left: -10px;
+	margin-top: 45px;	
+	width: 102%;
+	height: 100%;
+	background-image: url("../images/carrito-compra.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	text-align: right;
+	height: 261px;
+}
+
+.texto{
+	font-family: "Myriad Pro";
+	font-size: 25;
+	color: black;
+}
+
+.titulo-seccion{
+	border-bottom: 2px solid;
+	border-color: #77472F;
+	font-size: 22;
+	width: 100%;
+	color: #77472F;
+	text-align: center;
+	font-weight: bold;
+}
+
+.entrada-1{
+	width: 100%;
+	border:0px solid;
+	border-bottom: 1px solid;
+	border-color: black;
+}
+
+.entrada-1:focus{
+	border-color: #77472F;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.campo-form{
+	padding-top: 20px;
+	height: 40px;
+	color: black;
+	font-size: 15;
+}
+
+.img-libro{
+	width: 100px;
+	height: 147px;
+}
+
+.boton{
+	background-color: #77472F;
+	border-radius: 20px;
+	color: white;
+	font-weight: bold;
+	border-color: #77472F;
+}
+
+.pie-tabla{
+	text-align: right;
+	font-size: 25;
+	border-top: 2px solid;
+	border-color: #77472F;
+}
+
+#tit-tot{
+	color: #77472F;
+}
+
+.btn-opcion{
+	width: 50%; 
+	border-color: white; 
+	background-color: #77472F;
+	color:white;
+}
+
+.btn-opcion:hover{
+	background-color: #5F321B;
+	border-color: white;
+	color:white;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+
+/*Opciones para pantallas inferiores a 992px*/
+@media screen and (max-width: 992px) {
+
+	.contenedor-carrito{
+		height: 230px;
+	}
+
+	.texto{
+		font-size: 22;
+	}
+}
+
+/*Opciones para pantallas inferiores a 768px*/
+@media screen and (max-width: 768px) {
+	.contenedor-carrito{
+		height: 200px;
+	}	
+
+	.texto{
+		font-size: 17;
+	}
+}
+
+@media screen and (max-width: 480px){
+	.contenedor-carrito{
+		height: 130px;
+	}	
+
+	.texto{
+		font-size: 14;
+	}
+}

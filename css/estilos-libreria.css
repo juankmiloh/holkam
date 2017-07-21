@@ -1,3 +1,5 @@
+ /*------------------------------------------------------------------------------------*/
+
 /*Opciones para la imagen de fondo de la barra de navegación*/
 
 .texto-opcion{
@@ -229,7 +231,7 @@
         left: -10px;
         width: 106%;
 		height: 100%;	
-		background-image: url("../images/seccion-librerias-sm.png");
+		background-image: url("../images/seccion-librerias.png");
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 		text-align: right;
@@ -239,6 +241,18 @@
 
 	.texto{
 		font-size: 14;
+	}
+
+	.image_comer{
+		width: 70%;
+	}
+
+	.image_univer{
+		width: 70%;
+	}
+
+	.image_seccion_lib{
+		width: 115%;
 	}
 	
 }

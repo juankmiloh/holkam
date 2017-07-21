@@ -1,10 +1,4 @@
-body{
-	/*comandos para que no se pueda seleccionar el texto*/
-	-webkit-user-select: none; 
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-}
+ /*------------------------------------------------------------------------------------*/
 
 /*Opciones para la imagen de fondo de la barra de navegación*/
 
