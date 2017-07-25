@@ -49,6 +49,7 @@
 					$('#valor'+(i+1)).html(valor);
 				}
 				$("#total").text(sumando*unidad);
+				$("#total-field").val($("#total").text());
 			}
 
 			$("input[name=unidades]:radio").change(function(){
@@ -61,8 +62,10 @@
 				
 				if (valor == 1) {
 					costo1 = 300;
+					$("#tamanio_v").val("48.26x33.02 Cuarto Menor");
 				}else{
 					costo1 = 500;
+					$("#tamanio_v").val("35x25cm");
 				}
 				actualizar();
 			});
@@ -71,8 +74,10 @@
 				var valor = this.value;
 				if (valor == 1) {
 					costo2 = 600;
+					$("#orientacion_v").val("Horizontal");
 				}else{
 					costo2 = 400;
+					$("#orientacion_v").val("Vertical");
 				}
 				actualizar();
 			});
@@ -80,13 +85,17 @@
 			$("input[name=material]:radio" ).change(function(){
 				var valor = this.value;
 				if (valor == 1) {
-					costo3 = 400
+					costo3 = 400;
+					$("#material_v").val("Propalcote 300gr");
 				}else if(valor == 2){
 					costo3 = 350;
+					$("#material_v").val("Propalcote 200gr");
 				}else if(valor == 3){
-					costo3 = 300
+					costo3 = 300;
+					$("#material_v").val("EarthPact* 150gr");
 				}else if(valor == 4){
 					costo3 = 250;
+					$("#material_v").val("Propalcote 150gr");
 				}
 				actualizar();
 			});
@@ -95,8 +104,10 @@
 				var valor = this.value;
 				if (valor == 1) {
 					costo4 = 350;
+					$("#plastificado_v").val("Mate");
 				}else if(valor == 2){
 					costo4 = 200;
+					$("#plastificado_v").val("Brillante");
 				}
 				actualizar();
 			});
@@ -105,13 +116,24 @@
 				var valor = this.value;
 				if (valor == 1) {
 					costo5 = 430;
+					$("#acabado_v").val("Brillo UV");
 				}else if(valor == 0){
 					costo5 = 0;
+					$("#acabado_v").val("Ninguno");
 				}
 				actualizar();
 			});
 
 		});
+
+		function validarForm(){
+			if($("#tamanio_v").val() != "" && $("#orientacion_v").val() != "" && $("#material_v").val() != "" && $("#plastificado_v").val()!="" && $("#acabado_v").val()!="" && $("#total-field").val()!= 0){
+				return true;
+			}else{
+				alert("Seleccione todas las especificaciones.");
+				return false;
+			}
+		}
 	</script>
 	
 </head>
@@ -201,7 +223,8 @@
 	<div class="container">
 		<div class="row contenedor-medio">
 			<div class="col-xs-12 col-sm-3 col-md-3"><center><div class="opcion-img"><img  src="../images/impresion-d-3.jpg"></div></center></div>
-
+			<form action="agregar_imprime_carrito.php" onsubmit="return validarForm();">
+			<input type="hidden" name="id-seccion" value="3">
 			<div class="col-xs-12 col-sm-6 col-md-6"><div class="show"><br><br><br><br></div>
 				<div class="contenedor-especificaciones col-xs-12">
 					<label class="texto-especificaciones1">Escoge las especificaciones de tus productos</label>
@@ -209,10 +232,14 @@
 					<label class="texto-especificaciones">Tamaño</label>
 					<label class="radio-inline"><input type="radio" id="tamanio" name="tamanio" value="1">48.26x33.02 <i>Cuarto Menor</i></label>
 					<label class="radio-inline"><input type="radio" id="tamanio1" name="tamanio" value="2">35x25cm</label>
+					<input type="hidden" name="caracNombre1" value="Tamaño">
+					<input type="hidden" name="caracValor1" id="tamanio_v">
 
 					<label class="texto-especificaciones"><br>Orientación</label>
 					<label class="radio-inline"><input type="radio" id="orientacion" name="orientacion" value="1">Horizontal</i></label>
 					<label class="radio-inline"><input type="radio" id="orientacion1" name="orientacion" value="2">Vertical</label>
+					<input type="hidden" name="caracNombre2" value="Orientación">
+					<input type="hidden" name="caracValor2" id="orientacion_v">
 
 					<label class="texto-especificaciones"><br>Material</label>
 					<label class="radio-inline"><input type="radio" id="material" name="material" value="1">Propalcote 300gr</label>
@@ -221,20 +248,26 @@
 					<div class="radio">
 						<label class="radio-inline"><input type="radio" id="material3" name="material" value="4">Propalcote 150gr</label>
 					</div>
+					<input type="hidden" name="caracNombre3" value="Material">
+					<input type="hidden" name="caracValor3" id="material_v">
 					
-					<label class="texto-especificaciones"><br>Pastificado</label>
+					<label class="texto-especificaciones"><br>Plastificado</label>
 					<label class="radio-inline"><input type="radio" id="plastificado1" name="plastificado" value="1">Mate</label>
 					<label class="radio-inline"><input type="radio" id="plastificado2" name="plastificado" value="2">Brillante</label>
+					<input type="hidden" name="caracNombre4" value="Pastificado">
+					<input type="hidden" name="caracValor4" id="plastificado_v">
 					
 					<label class="texto-especificaciones"><br>Acabado</label>
 					<label class="radio-inline"><input type="radio" id="acabado1" name="acabado" value="1">Brillo UV</label>
 					<label class="radio-inline"><input type="radio" id="acabado0" name="acabado" value="0">Ninguno</label>
+					<input type="hidden" name="caracNombre5" value="Acabado">
+					<input type="hidden" name="caracValor5" id="acabado_v">
 					<hr>
 				</div>
 			</div>	
 			<div class=" col-xs-12 col-sm-3 col-md-3">
 				<center>
-					<form>
+					
 					<br>
 
 						<table class="table table-striped tabla">
@@ -288,6 +321,7 @@
 							</tr>
 						</table>
 						<input type="submit" class="btn boton" name="" value="Subir Diseño">
+						<input type="hidden" name="total" id="total-field" value="0">
 					</form>
 					<p>Adjunta tu diseño antes de finalizar la <br> compra. <a href="" style="color: black;"><b>indicaciones aqui.</b></a></p>
 					<div class="texto-total">

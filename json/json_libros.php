@@ -19,7 +19,7 @@
 	    $k_codlibro = $row['k_codlibro'];
 	    $n_titulo = $row['n_titulo'];
 	    $n_autor = $row['n_autor'];
-	    $o_genero = $row['o_genero'];
+	    $k_codgenero = $row['k_codgenero'];
 	    $v_cod_isbn = $row['v_cod_isbn'];
 	    $n_editorial = $row['n_editorial'];
 	    $v_num_pagina = $row['v_num_pagina'];
@@ -30,7 +30,7 @@
 	    						  'k_codlibro'=> $k_codlibro,
 				           		  'n_titulo'=> $n_titulo,
 				           		  'n_autor'=> $n_autor,
-				           		  'o_genero'=> $o_genero,
+				           		  'k_codgenero'=> $k_codgenero,
 				           		  'v_cod_isbn'=> $v_cod_isbn,
 				           		  'n_editorial'=> $n_editorial,
 				           		  'v_num_pagina'=> $v_num_pagina,

@@ -10,11 +10,11 @@
 	$json = file_get_contents('php://input');
 	$obj = json_decode($json);
 	//Nombre del libro.
-	$nombre_genero = $obj->libro->nombre_genero;
+	$k_codgenero = $obj->libro->k_codgenero;
 	//echo $nombre_genero;
 
 	//generamos la consulta
-	$sql = "SELECT l.consecutivo,l.k_codlibro,l.n_titulo,l.n_autor,l.o_genero,l.v_cod_isbn,l.n_editorial,l.v_num_pagina,l.v_precio,fl.n_fotografia FROM libro l, libro_fotografia fl WHERE l.o_genero LIKE '%".$nombre_genero."%' AND l.k_codlibro=fl.k_codlibro";
+	$sql = "SELECT l.*,lg.n_genero,lf.n_fotografia FROM libro l,libro_genero lg,libro_fotografia lf WHERE l.k_codlibro=lf.k_codlibro AND l.k_codgenero=lg.k_codgenero AND l.k_codgenero=".$k_codgenero."";
 
 	mysqli_set_charset($con, "utf8"); //formato de datos utf8
 
@@ -27,7 +27,7 @@
 	    $k_codlibro = $row['k_codlibro'];
 	    $n_titulo = $row['n_titulo'];
 	    $n_autor = $row['n_autor'];
-	    $o_genero = $row['o_genero'];
+	    $k_codgenero = $row['k_codgenero'];
 	    $v_cod_isbn = $row['v_cod_isbn'];
 	    $n_editorial = $row['n_editorial'];
 	    $v_num_pagina = $row['v_num_pagina'];
@@ -38,7 +38,7 @@
 	    						 'k_codlibro'=> $k_codlibro,
 				           		 'n_titulo'=> $n_titulo,
 				           		 'n_autor'=> $n_autor,
-				           		 'o_genero'=> $o_genero,
+				           		 'k_codgenero'=> $k_codgenero,
 				           		 'v_cod_isbn'=> $v_cod_isbn,
 				           		 'n_editorial'=> $n_editorial,
 				           		 'v_num_pagina'=> $v_num_pagina,

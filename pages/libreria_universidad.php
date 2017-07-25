@@ -33,6 +33,25 @@
 * SE IMPIDE SELECCIONAR / ARRASTRAR / DAR CLICK DERECHO
 -->
 <body oncontextmenu="return true" onselectstart="return false" ondragstart="return false"> 
+<?php
+	//VERIFICAMOS SI LA REDIRECCION ES DESDE LA MISMA PAGINA Y REDIRIJIMOS EL FOCO
+	if (isset($_GET['focalizar'])) {
+		$foco = $_GET['focalizar'];
+		if ($foco == "si") {
+			echo "<script language='javascript'>"; 
+			// echo "swal('si exito');"; 
+			echo "location.href = 'libreria_universidad.php#focalizar';";
+			echo "</script>";
+			//header("Location: libreria_universidad.php?focalizar=exito");
+		}else{
+			// echo "<script language='javascript'>"; 
+			// echo "alert('no');"; 
+			// echo "</script>";
+		}
+	}else{
+		$foco = "no";
+	}
+?>
 
 <a name="arriba"></a> <!--ESTO SE PONE PARA CUANDO SE CAMBIE DE PAGINA, SE DEVUELVA A LA PARTE DE ARRIBA DE LA PAGINA-->
 <!-- DIV's de imagen de carga oculto -->
@@ -193,12 +212,19 @@
 	        <div class="col-xs-12 col-sm-12 col-md-2">
 	            <span id="label_select_genero" class="label-select-genero">Género</span>
 	            <img class="img-select-genero" src="../images/select.png">
-		        <select ng-model="confirmed" ng-change="change();" id="select_genero" class="form-control select-genero" required>
-		            <option value="1">Acción</option>
-		            <option value="2">Drama</option>
-		            <option value="3">Sexo</option>
+	            <!-- 
+		            * ng-options => PERMITE CARGAR LOS DATOS EN EL SELECT - TRAYENDO LOS DATOS PREVIAMENTE EN UN ARREGLO [JSON]
+		            * ng-model   => ES EL NOMBRE CON EL QUE VAMOS A PODER HACER OPERACIONES EN EL CONTROLLER DE ANGULAR - ENVIA LOS DATOS
+		            * 			    QUE SE SELECCIONEN DEL SELECT EN FORMA DE OBJETO AL CONTROLADOR
+		            * ng-change  => PERMITE LLAMAR UNA FUNCION QUE ESTE EN EL CONTROLADOR
+	            -->
+		        <select ng-options="option.n_genero for option in datos_genero_libro track by option.k_codgenero" 
+		        		ng-model="select_genero" 
+		        		ng-change="buscar_por_genero();" 
+		        		class="form-control select-genero" 
+		        		required>
 		        </select>
-		        <p>{{selected}}</p>
+				<!-- <tt>option = {{select_genero}}</tt><br/> -->
 	        </div>
 	        <div class="col-xs-12 col-sm-12 col-md-2"></div>
 		</div>
@@ -230,7 +256,7 @@
 								<div class="col-xs-12 col-md-12" style="text-align: center;">
 									<div class="row">
 										<div class="col-xs-12 col-md-12 div_img_libro">
-											<img class="img_libro_destacado" onclick="redireccionar_detalle_libro();" style="cursor: pointer;">	
+											<img class="img_libro_destacado" onclick="redireccionar_detalle_libro_destacado();" style="cursor: pointer;">	
 										</div>
 									</div>
 									<div class="row">
@@ -244,7 +270,8 @@
 														</div>
 														<div class="col-xs-12 col-md-4" style="border: 0px solid purple; text-align: left; padding-left: 0px;">
 															<input type="hidden" class="consecutivo_libro_destacado">
-															<img src="../images/Libreria_15.png" class="img_carrito_libro" title="agregar al carrito" onclick="redireccionar_carrito();">
+															<input type="hidden" class="k_cod_libro_destacado">
+															<img src="../images/carrito_compra.png" class="img_carrito_libro" title="agregar al carrito" onclick="redireccionar_carrito_libro_destacado();">
 														</div>	
 													</div>
 												</div>
@@ -280,53 +307,40 @@
 	<div class="row show_pantalla_pequeña div_destacado_xs libro_destacado_hover">
 		<div class="col-xs-12 div_img_libro_xs">
 			<div class="div_libro_xs">
-				<img class="img_libro_destacado" onclick="redireccionar_detalle_libro();" style="width: 80%;">
+				<img class="img_libro_destacado" onclick="redireccionar_detalle_libro_destacado();" style="width: 80%;">
 				<span class="autor_libro_destacado" id="autor_libro_destacado_xs"></span>
 				<span class="titulo_libro_destacado" id="titulo_libro_destacado_xs"></span>
 				<span class="precio_libro_destacado" id="precio_libro_destacado_xs"></span>
-				<img src="../images/carrito_xs.png" class="img_carrito_libro_xs" onclick="redireccionar_carrito();">
+				<img src="../images/carrito_xs.png" class="img_carrito_libro_xs" onclick="redireccionar_carrito_libro_destacado();">
 				<input type="hidden" class="consecutivo_libro_destacado">
 				<input type="hidden" class="k_cod_libro_destacado">
 			</div>
 		</div>
 	</div>
 
+	<div class="row show_pantalla_pequeña" style="border: 0px solid green;">
+		<div class="col-xs-12 col-md-12">
+			<br><br><br><br><br><br>
+			<a name="focalizar"></a> <!--ESTO SE PONE PARA CUANDO SE SELECCIONE UNA PAGINA, SE DIRIJA EL FOCO A ESTE CONTROL-->
+		</div>
+	</div>
+
 	<!-- 
-	* SECCION CATEGORIAS - PANTALLAS GRANDES
+	* SECCION LIBROS - PANTALLAS GRANDES
 	-->
-	<div class="row show_pantalla_grande" style="border: 0px solid purple;">
-		<div class="col-xs-12 col-md-3" style="text-align: right; border: 0px solid;">
+	<div class="row" style="border: 0px solid purple;">
+		<!-- 
+		* SECCION CATEGORIAS
+		-->
+		<div class="col-xs-12 col-md-3 show_pantalla_grande" style="text-align: right; border: 0px solid;">
 			<img src="../images/label_categorias.png"><br><br><br>
-			<span style="font-size: 20px; cursor: pointer;">Arte (12)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Matemáticas (43)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Manualidades (54)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Terror (56)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Acción (78)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Erotico (65)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Triller (32)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Religiosos (32423)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Deportes (55)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Crónicas (23)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Historia (65)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Fantasía (76)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Narrativa Histórica (87)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Novela contemporánea (89)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Novela negra (87)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Oposiciones (67)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Cómics adultos (65)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Cómics infantil y juvenil (43)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Deportes y juegos (32)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Derecho (45)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Economía (42)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Empresa (54)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Filología (34)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Fotografía (12)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Guias de viaje (34)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Historia (54)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Idiomas (65)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Infantil (76)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Informática (78)</span><br>
-			<span style="font-size: 20px; cursor: pointer;">Ingeniería (12)</span><br>
+			<a href="javascript:listar_todos_libros()" style="font-size: 20px; color: black;">Listar Todas*</a><br>
+			<di class="row">
+				<div class="col-xs-12 col-md-12" ng-repeat="categoria in datos_categoria">
+					<a ng-href="" id="{{categoria.k_codgenero}}" style="font-size: 20px; color: black; cursor: pointer;" data-ng-click="buscar_categoria($event)">{{categoria.n_genero}}</a>
+					<span style="font-size: 20px; color: black;">({{categoria.numero_libros}})</span><br>
+				</div>
+			</di>
 		</div>
 		<div class="col-xs-12 col-md-1 show_pantalla_grande" style="border: 0px solid;">
 			<img src="../images/division_libros.png" style="height: 140%; width: 9%;">
@@ -364,25 +378,26 @@
 			$sql = "SELECT l.*,fl.n_fotografia FROM libro l,libro_fotografia fl WHERE l.k_codlibro=fl.k_codlibro LIMIT $empieza, $por_pagina";
 			$result = mysqli_query($con, $sql);
 		?>
-		<div class="col-xs-12 col-md-7" style="border: 0px solid;">
+		<div class="col-xs-12 col-md-7" style="border: 0px solid;" id="contenedor_libros_paginacion">
 			<div class="row">
 			<?php
 				while($row = mysqli_fetch_array($result)){
 			?>
 				<div class="col-xs-12 col-md-4" style="border: 0px solid red; text-align: center;">
-					<img id="<?php echo $row['k_codlibro']; ?>" src="../imagenes_libro/<?php echo $row['n_fotografia']; ?>" style="cursor: pointer; width: 90%; height: auto;">
+					<div class="col-xs-12 col-md-12 div_img_libro">
+						<img id="img_<?php echo $row['k_codlibro']; ?>" src="../imagenes_libro/<?php echo $row['n_fotografia']; ?>" class="img_libro" onclick="redireccionar_detalle_libro_paginado(this);">
+					</div>
 					<div class="row">
 						<div class="col-xs-12 col-md-12" style="border: 0px solid blue;">
 							<div class="row">
 								<div class="col-xs-12 col-md-12" style="border: 0px solid orange;">
 									<div class="row">
-										<div class="col-xs-12 col-md-8" style="border: 0px solid green; text-align: right; height: 8em;">
-											<span style="font-size: 1em; font-weight: bold; color: black;"><?php echo $row['n_titulo']; ?></span><br>
-											<span style="color: gray; font-size: 1em;"><?php echo $row['v_precio']; ?>$</span>
+										<div class="col-xs-8 col-md-8 div_titulo_libro" style="border: 0px solid green;">
+											<span class="titulo_libro"><?php echo $row['n_titulo']; ?></span><br>
+											<span class="precio_libro"><?php echo $row['v_precio']; ?>$</span>
 										</div>
-										<div class="col-xs-12 col-md-4" style="border: 0px solid purple; text-align: left; padding-left: 0px;">
-											<input type="hidden" value="<?php echo $row['consecutivo']; ?>">
-											<img id="<?php echo $row['k_codlibro']; ?>" src="../images/Libreria_15.png" class="img_carrito_libro" title="agregar al carrito">
+										<div class="col-xs-4 col-md-4 div_carrito_libro" style="border: 0px solid purple;">
+											<img id="carro_<?php echo $row['k_codlibro']; ?>" src="../images/carrito_compra.png" class="img_carrito_libro" title="agregar al carrito" onclick="redireccionar_carrito_libro_paginado(this);">
 										</div>	
 									</div>
 								</div>
@@ -437,34 +452,154 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 col-md-1" style="border: 0px solid;"></div>
 
 		<!-- 
 		* SECCION CONTENEDOR LIBROS [ANGULAR]
 		-->
 
-		<!-- <div class="col-xs-12 col-md-7">
+		<div class="col-xs-12 col-md-7" id="contenedor_libros_busqueda">
 			<div class="row">
-				<div class="col-xs-12 col-md-4" ng-repeat="post in posts" style="height: 75%;">
-	        		<img id="{{post.k_codlibro}}" src="../imagenes_libro/{{post.n_fotografia}}" style="cursor: pointer;" data-ng-click="detalle_libro($event)">	  
-	        		<div class="row">
-	        			<br>
-	        			<div class="col-xs-12 col-md-7 div_titulo_libro">
-        					<p style="font-size: 0.6em; font-weight: bold;">{{post.n_titulo}}</p>
-        					<p style="color: gray;">{{post.v_precio}}$</p>
-        					<input type="hidden" value="{{post.consecutivo}}">
+				<div class="col-xs-12 col-md-4" ng-repeat="post in datos_libro" style="border: 0px solid red; text-align: center;">
+					<div class="col-xs-12 col-md-12 div_img_libro">
+						<img id="{{post.k_codlibro}}" src="../imagenes_libro/{{post.n_fotografia}}" class="img_libro" data-ng-click="detalle_libro($event)">
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-md-12" style="border: 0px solid blue;">
+							<div class="row">
+								<div class="col-xs-12 col-md-12" style="border: 0px solid orange;">
+									<div class="row">
+										<div class="col-xs-8 col-md-8 div_titulo_libro" style="border: 0px solid green;">
+											<span class="titulo_libro">{{post.n_titulo}}</span><br>
+											<span class="precio_libro">{{post.v_precio}}$</span>
+										</div>
+										<div class="col-xs-4 col-md-4 div_carrito_libro" style="border: 0px solid purple;">
+											<input type="hidden" value="{{post.consecutivo}}">
+											<img id="img_libro_busqueda_{{post.k_codlibro}}" src="../images/carrito_compra.png" class="img_carrito_libro" title="agregar al carrito" data-ng-click="obtenerId($event)">
+										</div>	
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 
+		* SECCION CONTENEDOR DETALLE LIBRO [PHP]
+		-->
+
+		<div class="col-xs-12 col-md-7" id="contenedor_libro_detalle">
+			<div class="row">
+				<div class="col-xs-12 col-md-12 div_libro_detalle" style="border: 0px solid red;">
+					<?php
+					    //VERIFICAMOS SI LA REDIRECCION ES DESDE LA MISMA PAGINA SE PIDIO EL DETALLE DEL LIBRO / REDIRIJIMOS EL FOCO
+						if (isset($_GET['detalle'])) {
+							$detalle = $_GET['detalle'];
+							if ($detalle == "si") {
+								echo "<script language='javascript'>"; 
+								// echo "swal('si detalle!');";
+								echo "$('#contenedor_libros_paginacion').hide('fast');";
+								echo "$('#contenedor_libro_detalle').show('slow');";
+								echo "</script>";
+							}
+						}else{
+							$detalle = "no";
+							echo "<script language='javascript'>"; 
+							//echo "swal('no hay detalle!');";
+							echo "</script>";
+						}
+						//VERIFICAMOS SI EXISTE LA VARIABLE DE SESION DEL ID DEL LIBRO SE HACEESTO PARA PERMITIR UNA CORRECTA EJECUCION DEL SCRIPT PHP SINO EXISTE LA VARIABLE ASIGNAMOS CERO PARA QUE CONTINUE LA EJECUCION
+						if (isset($_GET['id'])) {
+							$codigo_libro = $_GET['id'];
+							if ($codigo_libro != null) {
+								echo "<script language='javascript'>"; 
+								// echo "swal('si hay id!');";
+								echo "</script>";
+							}
+						}else{
+							$codigo_libro = "0";
+							echo "<script language='javascript'>"; 
+							// echo "swal('no hay id!');";
+							echo "</script>";
+						}
+						
+						//echo $codigo_libro;
+						//generamos la consulta
+						$sql = "SELECT l.consecutivo,l.k_codlibro,l.n_titulo,l.n_autor,l.v_cod_isbn,l.n_editorial,l.v_num_pagina,l.v_precio,fl.n_fotografia FROM libro l, libro_fotografia fl WHERE l.k_codlibro=".$codigo_libro." AND l.k_codlibro=fl.k_codlibro";
+
+						mysqli_set_charset($con, "utf8"); //formato de datos utf8
+
+						if(!$result = mysqli_query($con, $sql)) die();
+
+						$valores_libro = array(); //creamos un array
+
+						while($row = mysqli_fetch_array($result)){ 
+							$consecutivo = $row['consecutivo'];
+						    $k_codlibro = $row['k_codlibro'];
+						    $n_titulo = $row['n_titulo'];
+						    $n_autor = $row['n_autor'];
+						    $v_cod_isbn = $row['v_cod_isbn'];
+						    $n_editorial = $row['n_editorial'];
+						    $v_num_pagina = $row['v_num_pagina'];
+						    $v_precio = $row['v_precio'];
+						    $n_fotografia = $row['n_fotografia'];
+						}
+						    
+						//desconectamos la base de datos
+						$close = mysqli_close($con) or die("Ha sucedido un error inexperado en la desconexion de la base de datos");
+					?>
+					<span class="titulo_libro_detalle"><?php echo $n_titulo; ?></span><br>
+					<!-- <span style="color: black;">Erotico / Romance / Drama</span><br><br><br> -->
+					<div class="row">
+						<div class="col-xs-12 col-md-4">
+							<img src="../imagenes_libro/<?php echo $n_fotografia; ?>">	
+						</div>
+						<div class="col-xs-12 col-md-8 div_valores_libro_detalle">
+							<div class="show_pantalla_grande"><br><br><br><br><br><br><br></div>
+							<span class="precio_libro_detalle"><?php echo $v_precio; ?>$</span><br>
+							<span class="label_libro_detalle">Autor: </span>
+							<span class="valor_libro_detalle"><?php echo $n_autor; ?></span><br>
+							<span class="label_libro_detalle">Editorial: </span>
+							<span class="valor_libro_detalle"><?php echo $n_editorial; ?></span><br>
+							<span class="label_libro_detalle">Año de edicion:  </span>
+							<span class="valor_libro_detalle">2016</span><br>
+							<span class="label_libro_detalle">Nº Páginas: </span>
+							<span class="valor_libro_detalle"><?php echo $v_num_pagina; ?></span><br>
+							<span class="label_libro_detalle">Formato: </span>
+							<span class="valor_libro_detalle">Impreso</span><br>
+						</div>
+        				<div class="col-xs-12 col-md-12">
+        					<br>
+        					<img id="img_libro_detalles_<?php echo $k_codlibro; ?>" src="../images/btn-comprar.png" class="img_carrito_libro_detalle" data-ng-click="obtenerId($event)" title="agregar al carrito">
         				</div>
-        				<div class="col-xs-12 col-md-5">
-        					<img id="{{post.k_codlibro}}" src="../images/Libreria_15.png" class="img_carrito_libro" data-ng-click="obtenerId($event)" title="agregar al carrito">
+        				<div class="col-xs-12 col-md-12">
+        					<br>
+        					<p style="color:black; text-align: justify; font-size: large;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam venenatis lacus justo. Nulla vulputate mollis hendrerit. Etiam id condimentum urna, in tempor ex. Nam tincidunt lacinia diam at rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam ullamcorper, purus pharetra fringilla lacinia, nunc lorem laoreet nulla, id convallis nisl lorem quis magna. Phasellus sed eros hendrerit, mattis nisl vel, imperdiet est.</p>
         				</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-12 col-md-1"></div>
-		</div> -->
+		</div>
+
+		<div class="col-xs-12 col-md-1" style="border: 0px solid;"></div>
 	</div>
 
-	<br><br><br><br><br><br><br>
+	<br><br><br>
+
+	<!-- 
+	* SECCION CONTENEDOR TERMINOS Y CONDICIONES / MEDIOS DE PAGO
+	-->
+	<div class="row">
+		<div class="col-xs-12 col-md-6 div_terminos_condiciones">
+			<img src="../images/terminos.png" class="img_terminos" onclick="mostrar_terminos_condiciones();" style="cursor: pointer;">
+		</div>
+		<div class="col-xs-12 col-md-6 div_medios_pago">
+			<img src="../images/medios_pago.png" class="img_medios_pago">
+		</div>
+	</div>
+
+	<br><br><br><br><br>
    
    	<footer class="pie">
 	   	<br>
@@ -588,15 +723,13 @@
 * CONTENEDOR - SECCION REDES SOCIALES FLOTANTES
 -->
 <div class="redes-sociales"></div>
-<!-- <div class="redes-sociales-c">
+<div class="redes-sociales-c">
 	<a href="#"><div id="f" class="red" title="Facebook"></div></a>
 	<a href="#"><div id="t" class="red" title="Twitter"></div></a>
 	<a href="#"><div id="g" class="red" title="Google+"></div></a>
 	<a href="#"><div id="l" class="red" title="Linkedin"></div></a>
-</div> -->
+</div>
 
 <script src="../javascript/script_redes.js"></script>
 </body>
 </html>
-
-

@@ -16,6 +16,9 @@ var variable_cambiar_auto;
 //CAPTURAMOS LA PAGINA ACTUAL SELECCIONADA DE LA PAGINACION
 var paginacion_actual = getQueryVariable('pagina');
 
+//CAPTURAMOS EL ID DEL LIBRO ACTUAL QUE ESTA SELECCIONADO EN LA SECCION DETALLE
+var id_libro_detalle_actual = getQueryVariable('id');
+
 /*=============================================
 * Funcion que permite abrir la ventana que aparece mientras se guarda la inspeccion
 *==============================================*/
@@ -186,17 +189,53 @@ function detener_girar_hacia_derecha_automatico() {
 * FUNCION QUE SE EJECUTA CUANDO SE DA CLICK AL LIBRO DESTACADO
 * SE REDIRECCIONA A LA PAGINA DETALLE LIBRO
 *==============================================*/
-function redireccionar_detalle_libro() {
+function redireccionar_detalle_libro_destacado() {
 	var k_codlibro = $('.k_cod_libro_destacado').val();
-	window.location = "../pages/libreria_universidad_detalle_libro.php?id="+k_codlibro;
+	if (id_libro_detalle_actual != k_codlibro) {
+    	window.location = "../pages/libreria_universidad.php?id="+k_codlibro+"&detalle=si#focalizar";
+    }else{
+    	$('#contenedor_libros_busqueda').hide('slow');
+		$('#contenedor_libros_paginacion').hide('slow');
+		$('#contenedor_libro_detalle').show('slow');
+		location.href = "#focalizar";
+    }
 }
 
 /*=============================================
 * FUNCION QUE SE EJECUTA CUANDO SE DA CLICK AL CARRITO DEL LIBRO DESTACADO
 * SE REDIRECCIONA A LA PAGINA DE AGREGAR AL CARRITO
 *==============================================*/
-function redireccionar_carrito() {
+function redireccionar_carrito_libro_destacado() {
 	var k_codlibro = $('.k_cod_libro_destacado').val();
+	window.location = "../pages/carrito_agregar.php?id="+k_codlibro;
+}
+
+/*=============================================
+* FUNCION QUE SE EJECUTA CUANDO SE DA CLICK AL LIBRO PAGINADO
+* SE REDIRECCIONA A LA PAGINA DETALLE LIBRO
+*==============================================*/
+function redireccionar_detalle_libro_paginado(img_libro) {
+	var id_img = $(img_libro).attr("id");
+    var k_codlibro = id_img.substr(4);
+    //alert(k_codlibro);
+    if (id_libro_detalle_actual != k_codlibro) {
+    	window.location = "../pages/libreria_universidad.php?id="+k_codlibro+"&detalle=si#focalizar";
+    }else{
+    	$('#contenedor_libros_busqueda').hide('slow');
+		$('#contenedor_libros_paginacion').hide('slow');
+		$('#contenedor_libro_detalle').show('slow');
+		location.href = "#focalizar";
+    }
+}
+
+/*=============================================
+* FUNCION QUE SE EJECUTA CUANDO SE DA CLICK AL CARRITO DEL LIBRO PAGINADO
+* SE REDIRECCIONA A LA PAGINA DE AGREGAR AL CARRITO
+*==============================================*/
+function redireccionar_carrito_libro_paginado(carrito) {
+	var id_carrito = $(carrito).attr("id");
+    var k_codlibro = id_carrito.substr(6);
+	// alert(k_codlibro);
 	window.location = "../pages/carrito_agregar.php?id="+k_codlibro;
 }
 
@@ -211,5 +250,32 @@ function refrescar_paginacion(pagina) {
 		location.href = "#arriba";
 		abrirVentanaCarga();
 		setTimeout(function(){ window.location = "libreria_universidad.php?pagina="+pagina+"#focalizar"; }, 500);
+	}else{
+		//alert("iguales!");
 	}
+}
+
+/*=============================================
+* FUNCION QUE SE EJECUTA CUANDO SE PRESIONA LA OPCION DE "LISTAR TODAS LAS CATEGORIAS!"
+*==============================================*/
+function listar_todos_libros() {
+	abrirVentanaCarga();
+	location.href = "libreria_universidad.php?focalizar=si";
+	//location.reload();
+}
+
+/*=============================================
+* FUNCION QUE SE EJECUTA CUANDO SE PRESIONA LA IMAGEN DE TERMINOS Y CONDICIONES
+*==============================================*/
+function mostrar_terminos_condiciones() {
+	swal({
+      title: 'Términos y Condiciones',
+      type: 'info',
+      html: '<p class="alerta">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam venenatis lacus justo. Nulla vulputate mollis hendrerit. Etiam id condimentum urna, in tempor ex. Nam tincidunt lacinia diam at rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam ullamcorper, purus pharetra fringilla lacinia, nunc lorem laoreet nulla, id convallis nisl lorem quis magna. Phasellus sed eros hendrerit, mattis nisl vel, imperdiet est.</p>',
+      showCloseButton: true,
+      showCancelButton: false,
+      confirmButtonText: '<i class="fa fa-thumbs-up"></i> Aceptar',
+      allowOutsideClick: false,
+      showConfirmButton: true
+    });
 }

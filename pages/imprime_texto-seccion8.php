@@ -47,7 +47,9 @@
 					$('#valor'+(i+1)).val(valor);
 					$('#valor'+(i+1)).html(valor);
 				}
+				$("#tamanio_v").val($("#alto").val()+" X "+$("#ancho").val());
 				$("#total").text(sumando*unidad);
+				$("#total-field").val($("#total").text());
 			}
 
 			$("input[name=unidades]:radio").change(function(){
@@ -57,8 +59,8 @@
 
 			$('#alto').change(function(){
 				if(isNaN(this.value)){
-					this.value = 0;
-					costo1 = this.value*15;
+					this.value = "";
+					costo1 = 0;
 				}else{
 					costo1 = this.value*15;
 				}
@@ -67,8 +69,8 @@
 
 			$('#ancho').change(function(){
 				if(isNaN(this.value)){
-					this.value = 0;
-					costo2 = this.value*15;
+					this.value = "";
+					costo2 = 0;
 				}else{
 					costo2 = this.value*15;
 				}
@@ -79,8 +81,10 @@
 				var valor = this.value;
 				if (valor == 1) {
 					costo3 = 600;
+					$("#plastificado_v").val("Mate");
 				}else{
 					costo3 = 400;
+					$("#plastificado_v").val("Brillante");
 				}
 				actualizar();
 			});
@@ -90,17 +94,30 @@
 				var valor = this.value;
 				if (valor == 1) {
 					costo4 = 430;
+					$("#acabado_v").val("Tubo + Cuerda");
 				}else if(valor == 2){
 					costo4 = 300;
+					$("#acabado_v").val("Ojaletes");
 				}else if(valor == 3){
 					costo4 = 200;
+					$("#acabado_v").val("Araña");
 				}else{
 					costo4 = 180;
+					$("#acabado_v").val("Roller");
 				}
 				actualizar();
 			});
 
 		});
+
+		function validarForm(){
+			if($("#alto").val() != "" && $("#ancho").val() != "" && $("#plastificado_v").val() != "" && $("#acabado_v").val() != "" && $("#total-field").val()!= 0){
+				return true;
+			}else{
+				alert("Seleccione todas las especificaciones.");
+				return false;
+			}
+		}
 	</script>
 	
 </head>
@@ -190,7 +207,8 @@
 	<div class="container">
 		<div class="row contenedor-medio">
 			<div class="col-xs-12 col-sm-3 col-md-3"><center><div class="opcion-img"><img  src="../images/impresion-d-8.jpg"></div></center></div>
-
+			<form action="agregar_imprime_carrito.php" onsubmit="return validarForm();">
+			<input type="hidden" name="id-seccion" value="8">
 			<div class="col-xs-12 col-sm-6 col-md-6"><div class="show"><br><br><br><br></div>
 				<div class="contenedor-especificaciones col-xs-12">
 					<label class="texto-especificaciones1">Escoge las especificaciones de tus productos</label>
@@ -200,10 +218,14 @@
 						<input type="text" class="col-xs-12 col-md-6 form-control campo-txt" id="alto" name="alto" placeholder="Alto">
 						<input type="text" class="col-xs-12 col-md-6 form-control campo-txt" id="ancho" name="ancho" placeholder="Ancho">
 					</div>
+					<input type="hidden" name="caracNombre1" value="Tamaño en cms">
+					<input type="hidden" name="caracValor1" id="tamanio_v">
 					
-					<label class="texto-especificaciones"><br>Pastificado</label>
+					<label class="texto-especificaciones"><br>Plastificado</label>
 					<label class="radio-inline"><input type="radio" id="plastificado1" name="plastificado" value="1">Mate</label>
 					<label class="radio-inline"><input type="radio" id="plastificado2" name="plastificado" value="2">Brillante</label>
+					<input type="hidden" name="caracNombre2" value="Plastificado">
+					<input type="hidden" name="caracValor2" id="plastificado_v">
 					
 					<label class="texto-especificaciones"><br>Acabado</label>
 					<div class="radio">
@@ -214,12 +236,14 @@
 						<label class="radio-inline"><input type="radio" id="acabado3" name="acabado" value="3">Araña</label>
 						<label class="radio-inline"><input type="radio" id="acabado4" name="acabado" value="4">Roller</label>
 					</div>
+					<input type="hidden" name="caracNombre3" value="Acabado">
+					<input type="hidden" name="caracValor3" id="acabado_v">
 					<hr>
 				</div>
 			</div>	
 			<div class=" col-xs-12 col-sm-3 col-md-3">
 				<center>
-					<form>
+					
 					<br>
 
 						<table class="table table-striped tabla">
@@ -273,6 +297,7 @@
 							</tr>
 						</table>
 						<input type="submit" class="btn boton" name="" value="Subir Diseño">
+						<input type="hidden" name="total" id="total-field" value="0">
 					</form>
 					<p>Adjunta tu diseño antes de finalizar la <br> compra. <a href="" style="color: black;"><b>indicaciones aqui.</b></a></p>
 					<div class="texto-total">

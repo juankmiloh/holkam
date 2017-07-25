@@ -68,6 +68,10 @@ if(obtenerSesion("username", 3) == ""){
 				actualizarPreview(id,cantidad,total);
 				url = "actualizar_pedido.php?id="+id+"&cant="+cantidad+"&tot="+total;
 				$.get(url, function(data,status){
+					if($("#total2").val() != ""){
+						data = parseInt(data)+parseInt($("#total2").val());
+					}
+					
 					$("#total-precio").text(data+" $");
 				});
 			});
@@ -82,6 +86,9 @@ if(obtenerSesion("username", 3) == ""){
 				actualizarPreview(id,cantidad,total);
 				url = "actualizar_pedido.php?id="+id+"&cant="+cantidad+"&tot="+total;
 				$.get(url, function(data,status){
+					if($("#total2").val() != ""){
+						data = parseInt(data)+parseInt($("#total2").val());
+					}
 					$("#total-precio").text(data+" $");
 				});
 			});
@@ -127,7 +134,7 @@ if(obtenerSesion("username", 3) == ""){
 					</div>
 
 
-					<div class="container navbar-fixed-top"><a href="libreria_universidad.php"><div class="btn-atras" title="Atras"></div></a>
+					<div class="container navbar-fixed-top"><a href="<?php if(obtenerGet("ex",2)=="Agregad"){echo 'libreria_universidad.php';}else{echo 'imprime_texto.html';}?>"><div class="btn-atras" title="Atras"></div></a>
 						<a href="../index.html"><div class="imagen"></div>
 							<div class="referencia-index col-sm-3 col-md-3"></div>
 						</a>
@@ -160,7 +167,7 @@ if(obtenerSesion("username", 3) == ""){
 	</div>
 
 	<div class="container">
-		<table class="table">
+		<table class="table table-responsive">
 			<thead>
 				<th>Producto</th>
 				<th>Envío</th>
@@ -210,22 +217,101 @@ if(obtenerSesion("username", 3) == ""){
 				?>
 			</tbody>
 		</table>
+		<table class="table table-responsive">
+			<thead>
+				<th>Impresión</th>
+				<th>Escecificaciones</th>
+				<th>Cantidad</th>
+				<th>Precio</th>
+			</thead>
+			<tbody>
+				<?php
+				$sqlPedido2 = "SELECT 
+									ise.*, 
+									pais.* 
+								FROM 
+									imprime_seccion ise, 
+									pedido_actual_imprime_seccion pais 
+								WHERE 
+									pais.is_id = ise.is_id
+								AND cli_id = ".obtenerSesion("username",3)->cli_id."
+								AND pais.pais_activo = 1";
+				$queryPedido2 = prepararQuery($sqlPedido2);
+				$resultPedido2 = ejecutarQuery($queryPedido2);
+				if($resultPedido2){
+					while($pedido2 = $queryPedido2->fetchObject()){
+						?>
+						<tr>
+							<td><img class="img-imprime" src="../images/<?php echo $pedido2->is_imagen ?>"></td>
+							<td>
+								<?php
+								$sqlCarac = "SELECT * FROM caracteristica_imprime_seccion WHERE pais_id = ".$pedido2->pais_id." ORDER BY cis_id";
+								$queryCarac = prepararQuery($sqlCarac);
+								$resultCarac = ejecutarQuery($queryCarac);
+								if($resultCarac){
+									?>
+									<table class="table table-bordered">
+									<?php
+									while($carac = $queryCarac->fetchObject()){
+										?>
+										<tr>
+											<td><strong><?php echo utf8_decode($carac->cis_nombre) ?></strong></td>
+											<td><?php echo utf8_decode($carac->cis_valor) ?></td>
+										</tr>
+										
+										<?php
+									}
+									?>
+									</table>
+									<?php
+								}
+								?>
+							</td>
+							<td><strong><?php echo $pedido2->pais_cantidad ?></strong></td>
+							<td><strong><?php echo $pedido2->pais_valor_total ?> &nbsp;$</strong></td>
+						</tr>
+						<?php
+					}
+				}
+				?>
+			</tbody>
+		</table>
 		<div class="pie-tabla"><br>
 		<?php
 		if(obtenerSesion("username", 3) != ""){
+			$sql1 = "SELECT SUM(pais_valor_total) AS suma1 FROM pedido_actual_imprime_seccion WHERE cli_id =".obtenerSesion("username",3)->cli_id." AND pais_activo = 1";
+			$query1 = prepararQuery($sql1);
+			$result1 = ejecutarQuery($query1);
+			if($result1){
+				$suma1 = $query1->fetchObject();
+				?>
+				<input type="hidden" id="total2" value="<?php echo $suma1->suma1; ?>">
+				<?php
+			}
 		?>
+
 			<label id="tit-tot">Total</label><br>	
 			<label id="total-precio"><?php
 			$sql = "SELECT SUM(ped_total) AS suma FROM pedido_actual WHERE ped_usuario_id =".obtenerSesion("username",3)->cli_id;
 			$query = prepararQuery($sql);
 			$result = ejecutarQuery($query);
+			$result2 = ejecutarQuery($query1);
 			if($result){
-				$sumaTotal = $query->fetchObject();
-				echo $sumaTotal->suma." $";
+				if($result2){
+					$suma2 = $query1->fetchObject();
+					$sumaTotal = $query->fetchObject();
+					if($suma2->suma1 != ""){
+						echo $sumaTotal->suma+$suma2->suma1." $";
+					}else{
+						echo $sumaTotal->suma." $";
+					}	
+				}
 			}
 			?></label>
 			<br>
 			<a href="autenticacion_users/nueva_cuenta.php?pago=true"><img src="../images/btn-comprar.png" style="margin-right: -2%; margin-top: -1%;"></a>
+			<hr>
+			<a href="./crear_pdf_cotizacion.php">Descargar Cotización</a>
 			<br><br>
 		<?php } ?>
 		

@@ -44,7 +44,7 @@ if($resultLibro){
 		$queryInsertLibro = prepararQuery($sqlInsertLib);
 		$resultInsertLibro = ejecutarQuery($queryInsertLibro);
 		if($resultInsertLibro){
-			header("location: carrito_compras.php?ex=Agregado");
+			header("location: carrito_compras.php?ex=Agregad");
 		}
 	}
 }

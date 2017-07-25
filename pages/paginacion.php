@@ -42,7 +42,7 @@
 		<tr align="center">
 			<td><?php echo $row['k_codlibro']; ?></td>
 			<td><?php echo $row['n_titulo']; ?></td>
-			<td><?php echo $row['o_genero']; ?></td>
+			<td><?php echo $row['k_codgenero']; ?></td>
 		</tr>
 		<?}?>
 	</table>

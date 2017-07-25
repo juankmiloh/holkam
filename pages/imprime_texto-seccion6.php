@@ -54,6 +54,7 @@
 					$('#valor'+(i+1)).html(valor);
 				}
 				$("#total").text(sumando*unidad);
+				$("#total-field").val($("#total").text());
 			}
 
 			$("input[name=unidades]:radio").change(function(){
@@ -66,10 +67,13 @@
 				
 				if (valor == 1) {
 					costo1 = 300;
+					$("#tamanioA_v").val("21.59 x 13.97cm Media carta");
 				}else if(valor == 2){
 					costo1 = 500;
+					$("#tamanioA_v").val("27.94 x 21.59cm Carta");
 				}else{
 					costo1 = 600;
+					$("#tamanioA_v").val("43.18 x 27.94cm Tabloide");
 				}
 				actualizar();
 			});
@@ -78,10 +82,13 @@
 				var valor = this.value;
 				if (valor == 1) {
 					costo2 = 200;
+					$("#tamanioC_v").val("10.79 x 13.97cm Media carta");
 				}else if(valor == 2){
 					costo2 = 400;
+					$("#tamanioC_v").val("13.97 x 21.59cm Carta");
 				}else{
 					costo2 = 500;
+					$("#tamanioC_v").val("21.59 x 27.94cm Tabloide");
 				}
 				actualizar();
 			});
@@ -90,12 +97,16 @@
 				var valor = this.value;
 				if(valor == 1){
 					costo6 = 1000;
+					$("#paginas_v").val("10");
 				}else if(valor == 2){
 					costo6 = 2000;
+					$("#paginas_v").val("20");
 				}else if(valor == 3){
 					costo6 = 5000;
+					$("#paginas_v").val("30");
 				}else{
 					costo6 = 0;
+					$("#paginas_v").val("0");
 				}
 				actualizar();
 			});
@@ -103,13 +114,17 @@
 			$("input[name=material]:radio" ).change(function(){
 				var valor = this.value;
 				if (valor == 1) {
-					costo3 = 200
+					costo3 = 200;
+					$("#material_v").val("Propalcote 115gr");
 				}else if(valor == 2){
 					costo3 = 350;
+					$("#material_v").val("Propalcote 150gr");
 				}else if(valor == 3){
-					costo3 = 500
+					costo3 = 500;
+					$("#material_v").val("Propalcote 200gr");
 				}else if(valor == 4){
 					costo3 = 100;
+					$("#material_v").val("Yo llevo papel");
 				}
 				actualizar();
 			});
@@ -118,10 +133,13 @@
 				var valor = this.value;
 				if(valor == 1){
 					costo7 = 2000;
+					$("#encuadernado_v").val("Grapado");
 				}else if(valor == 2){
 					costo7 = 1500;
+					$("#encuadernado_v").val("Cosido al Caballete");
 				}else{
 					costo7 = 0;
+					$("#encuadernado_v").val("Sin grapar");
 				}
 				actualizar();
 
@@ -131,8 +149,10 @@
 				var valor = this.value;
 				if (valor == 1) {
 					costo4 = 350;
+					$("#plastificado_v").val("Mate");
 				}else if(valor == 2){
 					costo4 = 200;
+					$("#plastificado_v").val("Brillante");
 				}
 				actualizar();
 			});
@@ -141,15 +161,27 @@
 				var valor = this.value;
 				if (valor == 1) {
 					costo5 = 430;
+					$("#acabado_v").val("Brillo UV");
 				}else if(valor == 2){
 					costo5 = 400;
+					$("#acabado_v").val("Puntas redondeadas");
 				}else{
 					costo5 = 0;
+					$("#acabado_v").val("Ninguno");
 				}
 				actualizar();
 			});
 
 		});
+
+		function validarForm(){
+			if($("#tamanioA_v").val() != "" && $("#tamanioC_v").val() != "" && $("#paginas_v").val() != 0 && $("#material_v").val() != "" && $("#encuadernado_v").val()!="" && $("#plastificado_v").val()!="" && $("#acabado_v").val()!="" && $("#total-field").val()!= 0){
+				return true;
+			}else{
+				alert("Seleccione todas las especificaciones.");
+				return false;
+			}
+		}
 	</script>
 	
 </head>
@@ -239,7 +271,8 @@
 	<div class="container">
 		<div class="row contenedor-medio">
 			<div class="col-xs-12 col-sm-3 col-md-3"><center><div class="opcion-img"><img  src="../images/impresion-d-6.jpg"></div></center></div>
-
+			<form action="agregar_imprime_carrito.php" onsubmit="return validarForm();">
+			<input type="hidden" name="id-seccion" value="6">
 			<div class="col-xs-12 col-sm-6 col-md-6"><div class="show"><br><br><br><br></div>
 				<div class="contenedor-especificaciones col-xs-12">
 					<label class="texto-especificaciones1">Escoge las especificaciones de tus productos</label>
@@ -250,6 +283,8 @@
 					<div class="radio">
 						<label class="radio-inline"><input type="radio" id="tamanioA2" name="tamanioA" value="3">43.18 x 27.94cm Tabloide</label>
 					</div>
+					<input type="hidden" name="caracNombre1" value="Tamaño Abierto">
+					<input type="hidden" name="caracValor1" id="tamanioA_v">
 
 					<label class="texto-especificaciones"><br>Tamaño Cerrado</label>
 					<label class="radio-inline"><input type="radio" id="tamanioC" name="tamanioC" value="1">10.79 x 13.97cm Media carta</label>
@@ -257,17 +292,21 @@
 					<div class="radio">
 						<label class="radio-inline"><input type="radio" id="tamanioC2" name="tamanioC" value="3">21.59 x 27.94cm Tabloide</label>
 					</div>
+					<input type="hidden" name="caracNombre2" value="Tamaño Cerrado">
+					<input type="hidden" name="caracValor2" id="tamanioC_v">
 
 					<label class="texto-especificaciones"><br>Cuerpos (Páginas)</label>	
 					<div class="form-group">
-					<label for="paginas">Escoge el número de páginas</label>
-					<select id="paginas" name="paginas" class="selectpicker show-tick">
-						<option value="0">-------</option>
-						<option value="1">10</option>
-						<option value="2">20</option>
-						<option value="3">50</option>
-					</select>
+						<label for="paginas">Escoge el número de páginas</label>
+						<select id="paginas" name="paginas" class="selectpicker show-tick">
+							<option value="0">-------</option>
+							<option value="1">10</option>
+							<option value="2">20</option>
+							<option value="3">50</option>
+						</select>
 					</div>
+					<input type="hidden" name="caracNombre3" value="Número de páginas">
+					<input type="hidden" name="caracValor3" id="paginas_v">
 
 					<label class="texto-especificaciones"><br>Material</label>
 					<label class="radio-inline"><input type="radio" id="material" name="material" value="1">Propalcote 115gr</label>
@@ -276,28 +315,34 @@
 					<div class="radio">
 						<label class="radio-inline"><input type="radio" id="material3" name="material" value="4">Yo llevo papel</label>
 					</div>
+					<input type="hidden" name="caracNombre4" value="Material">
+					<input type="hidden" name="caracValor4" id="material_v">
 
 					<label class="texto-especificaciones"><br>Encuadernado</label>
 					<label class="radio-inline"><input type="radio" id="encuadernado1" name="encuadernado" value="1">Grapado</label>
 					<label class="radio-inline"><input type="radio" id="encuadernado2" name="encuadernado" value="2">Cosido al Caballete</label>	
-					<label class="radio-inline"><input type="radio" id="encuadernado3" name="encuadernado" value="3">Sin grapar</label>						
+					<label class="radio-inline"><input type="radio" id="encuadernado3" name="encuadernado" value="3">Sin grapar</label>		
+					<input type="hidden" name="caracNombre5" value="Encuadernado">
+					<input type="hidden" name="caracValor5" id="encuadernado_v">				
 					
-					<label class="texto-especificaciones"><br>Pastificado</label>
+					<label class="texto-especificaciones"><br>Plastificado</label>
 					<label class="radio-inline"><input type="radio" id="plastificado1" name="plastificado" value="1">Mate</label>
 					<label class="radio-inline"><input type="radio" id="plastificado2" name="plastificado" value="2">Brillante</label>
+					<input type="hidden" name="caracNombre6" value="Plastificado">
+					<input type="hidden" name="caracValor6" id="plastificado_v">
 					
 					<label class="texto-especificaciones"><br>Acabado</label>
 					<label class="radio-inline"><input type="radio" id="acabado1" name="acabado" value="1">Brillo UV</label>
 					<label class="radio-inline"><input type="radio" id="acabado2" name="acabado" value="2">Puntas redondeadas</label>
 					<label class="radio-inline"><input type="radio" id="acabado0" name="acabado" value="0">Ninguno</label>
+					<input type="hidden" name="caracNombre7" value="Acabado">
+					<input type="hidden" name="caracValor7" id="acabado_v">
 					<hr>
 				</div>
 			</div>	
 			<div class=" col-xs-12 col-sm-3 col-md-3">
 				<center>
-					<form>
 					<br>
-
 						<table class="table table-striped tabla">
 							<tr>
 								<td>
@@ -349,6 +394,7 @@
 							</tr>
 						</table>
 						<input type="submit" class="btn boton" name="" value="Subir Diseño">
+						<input type="hidden" name="total" id="total-field" value="0">
 					</form>
 					<p>Adjunta tu diseño antes de finalizar la <br> compra. <a href="" style="color: black;"><b>indicaciones aqui.</b></a></p>
 					<div class="texto-total">

@@ -23,11 +23,18 @@ class database{
         $password = "root";
         $database = "holkam_bd";
 
-        // Para trabajar en el servidor
+        // Para trabajar en el servidor co.nf
         // $hostname = "fdb3.biz.nf";
         // $username = "2171105_carrito";
         // $password = "holkam1234";
         // $database = "2171105_carrito";
+
+        // Para trabajar en el servidor byethost
+        // $hostname = "sql311.byethost11.com";
+        // $username = "b11_20432622";
+        // $password = "holkam1234";
+        // $database = "b11_20432622_holkam_bd";
+        
         $dbh = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
         $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -102,3 +109,21 @@ function cleanQuery($string){
     return $string;
 }
 
+function ultimoIDInsertado($tabla, $columnaID){
+    try{
+        $sqlID = "SELECT $columnaID FROM $tabla ORDER BY $columnaID DESC LIMIT 1";
+        $queryID = prepararQuery($sqlID);
+        $resultID = ejecutarQuery($queryID);
+        $objectID = crearObjeto($queryID);
+        $lastID = $objectID->$columnaID;
+        return $lastID;
+    }
+    catch (Exception $e){
+        return false;
+    }
+}
+
+function crearObjeto($query){
+    $objeto = $query->fetchObject();
+    return $objeto;
+}

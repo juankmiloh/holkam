@@ -2,6 +2,19 @@ body{
 	font-family: "Myriad Pro", Myriad, "Liberation Sans", "Nimbus Sans L", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+#contenedor_libros_busqueda{
+	display: none;
+}
+
+#contenedor_libro_detalle{
+	display: none;
+}
+
+.alerta{
+	color:black;
+	text-align: justify;
+}
+
 /*=============================================
 * ESTILOS PARA VENTANA DE CARGAR
 *==============================================*/
@@ -332,23 +345,6 @@ body{
     cursor: pointer;
 }
 
-.img_carrito_libro{
-	cursor: pointer;
-	z-index: 4;
-}
-
-.img_carrito_libro:hover{
-	transform : scale(1.1);	
-    -moz-transform : scale(1.1);       /*Firefox*/ 
-    -webkit-transform : scale(1.1);    /*Chrome - Safari*/ 
-    -o-transform : scale(1.1);         /*Opera */
-    transition: width 0.5s, height 0.5s, transform 0.5s;
-    -moz-transition: width 0.5s, height 0.5s, -moz-transform 0.5s;
-    -webkit-transition: width 0.5s, height 0.5s, -webkit-transform 0.5s;
-    -o-transition: width 0.5s, height 0.5s,-o-transform 0.5s;
-    cursor: pointer;
-}
-
 /*=============================================
 * OPCIONES PARA EL CONTENDEOR DE LIBROS DESTACADOS - [PANTALLAS PEQUEÑAS]
 *==============================================*/
@@ -380,7 +376,7 @@ body{
 #titulo_libro_destacado_xs{
 	font-size: 1em; 
 	width: 90%; 
-	padding-top: 160px; 
+	padding-top: 140px; 
 	font-weight: normal; 
 	padding-left: 22px; 
 	color: black; 
@@ -403,6 +399,105 @@ body{
 	padding-left: 82px; 
 	position: absolute;
 	cursor: pointer;
+}
+
+/*=============================================
+* OPCIONES PARA EL CONTENDEOR DE LIBROS - [PANTALLAS GRANDES]
+*==============================================*/
+.img_libro{
+	cursor: pointer; width: 90%; height: auto;
+}
+
+.div_titulo_libro{
+	text-align: right; height: 6em;
+}
+
+.titulo_libro{
+	font-size: 0.7em; font-weight: bold; color: black;
+}
+
+.precio_libro{
+	color: gray; font-size: 0.7em;
+}
+
+.div_carrito_libro{
+	text-align: left; padding-left: 0px;
+}
+
+.img_carrito_libro{
+	cursor: pointer;
+	z-index: 4;
+	width: 85%;
+	height: auto;
+}
+
+.img_carrito_libro:hover{
+	transform : scale(1.1);	
+    -moz-transform : scale(1.1);       /*Firefox*/ 
+    -webkit-transform : scale(1.1);    /*Chrome - Safari*/ 
+    -o-transform : scale(1.1);         /*Opera */
+    transition: width 0.5s, height 0.5s, transform 0.5s;
+    -moz-transition: width 0.5s, height 0.5s, -moz-transform 0.5s;
+    -webkit-transition: width 0.5s, height 0.5s, -webkit-transform 0.5s;
+    -o-transition: width 0.5s, height 0.5s,-o-transform 0.5s;
+    cursor: pointer;
+}
+
+/*=============================================
+* OPCIONES PARA EL CONTENDEOR DETALLE LIBRO - [PANTALLAS GRANDES]
+*==============================================*/
+.div_libro_detalle{
+	text-align: center;
+}
+
+.div_valores_libro_detalle{
+
+}
+
+.titulo_libro_detalle{
+	color: black; font-weight: bold; font-size: xx-large;
+}
+
+.precio_libro_detalle{
+	color: black; font-weight: bold; font-size: xx-large;
+}
+
+.label_libro_detalle{
+	color: black; font-weight: bold; font-size: large; color: #6b2005;
+}
+
+.valor_libro_detalle{
+	color: black; font-weight: normal; font-size: large;
+}
+
+.img_carrito_libro_detalle{
+	cursor: pointer;
+	z-index: 4;
+}
+
+.img_carrito_libro_detalle:hover{
+	transform : scale(1.1);	
+    -moz-transform : scale(1.1);       /*Firefox*/ 
+    -webkit-transform : scale(1.1);    /*Chrome - Safari*/ 
+    -o-transform : scale(1.1);         /*Opera */
+    transition: width 0.5s, height 0.5s, transform 0.5s;
+    -moz-transition: width 0.5s, height 0.5s, -moz-transform 0.5s;
+    -webkit-transition: width 0.5s, height 0.5s, -webkit-transform 0.5s;
+    -o-transition: width 0.5s, height 0.5s,-o-transform 0.5s;
+    cursor: pointer;
+}
+
+/*=============================================
+* OPCIONES PARA EL CONTENDEOR TERMINOS Y CONDICIONES / MEDIOS DE PAGO
+*==============================================*/
+.div_terminos_condiciones{
+	text-align: right;
+	border: 0px solid red;
+}
+
+.div_medios_pago{
+	text-align: left;
+	border: 0px solid blue;
 }
 
 /*==========================================================================================================
@@ -500,6 +595,58 @@ body{
 
 	.div_libro_xs {
 	    right: 330;
+	}
+
+	/*=============================================
+	* OPCIONES PARA EL CONTENEDOR DE LIBROS EN PANTALLAS MEDIANAS HAACIA ABAJO
+	*==============================================*/
+
+	.img_libro{
+		cursor: pointer; width: 15em; height: auto;
+	}
+
+	.div_titulo_libro{
+		text-align: right; height: 5em; width: 55%;
+	}
+
+	.titulo_libro{
+		font-size: 0.7em; font-weight: bold; color: black;
+	}
+
+	.precio_libro{
+		color: gray; font-size: 0.7em;
+	}
+
+	.div_carrito_libro{
+		text-align: left; padding-left: 0px;
+	}
+
+	.img_carrito_libro{
+		cursor: pointer;
+		z-index: 4;
+		width: 3.5em;
+		height: auto;
+	}
+
+	/*=============================================
+	* OPCIONES PARA EL CONTENDEOR MEDIOS DE PAGO / TERMINOS Y CONDICIONES
+	*==============================================*/
+	.div_medios_pago{
+		text-align: center;
+	}
+
+	.div_terminos_condiciones{
+		text-align: center;
+	}
+
+	.img_terminos{
+		width: 100%;
+		height: auto;
+	}
+
+	.img_medios_pago{
+		width: 100%;
+		height: auto;
 	}
 }
 

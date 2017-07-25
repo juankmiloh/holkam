@@ -51,6 +51,7 @@
 					$('#valor'+(i+1)).html(valor);
 				}
 				$("#total").text(sumando*unidad);
+				$("#total-field").val($("#total").text());
 			}
 
 			$("input[name=unidades]:radio").change(function(){
@@ -63,8 +64,10 @@
 				
 				if (valor == 1) {
 					costo1 = 300;
+					$("#lomo_v").val("Clásica sin lomo");
 				}else{
 					costo1 = 500;
+					$("#lomo_v").val("Clásica con lomo (4mm)");
 				}
 				actualizar();
 			});
@@ -73,8 +76,10 @@
 				var valor = this.value;
 				if (valor == 1) {
 					costo2 = 600;
+					$("#caras_v").val("Una cara / 4x0");
 				}else{
 					costo2 = 400;
+					$("#caras_v").val("Dos cara / 4x4");
 				}
 				actualizar();
 			});
@@ -82,13 +87,17 @@
 			$("input[name=material]:radio" ).change(function(){
 				var valor = this.value;
 				if (valor == 1) {
-					costo3 = 400
+					costo3 = 400;
+					$("#material_v").val("Propalcote 300gr");
 				}else if(valor == 2){
 					costo3 = 350;
+					$("#material_v").val("Propalcote 200gr");
 				}else if(valor == 3){
-					costo3 = 300
+					costo3 = 300;
+					$("#material_v").val("EarthPact* 150gr");
 				}else if(valor == 4){
 					costo3 = 250;
+					$("#material_v").val("Propalcote 150gr");
 				}
 				actualizar();
 			});
@@ -97,8 +106,10 @@
 				var valor = this.value;
 				if (valor == 1) {
 					costo4 = 350;
+					$("#plastificado_v").val("Mate");
 				}else if(valor == 2){
 					costo4 = 200;
+					$("#plastificado_v").val("Brillante");
 				}
 				actualizar();
 			});
@@ -107,17 +118,30 @@
 				var valor = this.value;
 				if (valor == 1) {
 					costo5 = 500;
+					$("#acabado_v").val("Brillo UV total");
 				}else if(valor == 2){
 					costo5 = 430;
+					$("#acabado_v").val("Puntas redondeadas");
 				}else if(valor == 3){
 					costo5 = 300;
+					$("#acabado_v").val("Brillo UV parcial");
 				}else{
 					costo5 = 350;
+					$("#acabado_v").val("Troquelado");
 				}
 				actualizar();
 			});
 
 		});
+
+		function validarForm(){
+			if($("#lomo_v").val() != "" && $("#caras_v").val() != "" && $("#material_v").val() != "" && $("#plastificado_v").val()!="" && $("#acabado_v").val()!="" && $("#total-field").val()!= 0){
+				return true;
+			}else{
+				alert("Seleccione todas las especificaciones.");
+				return false;
+			}
+		}
 	</script>
 	
 </head>
@@ -207,7 +231,8 @@
 	<div class="container">
 		<div class="row contenedor-medio">
 			<div class="col-xs-12 col-sm-3 col-md-3"><center><div class="opcion-img"><img  src="../images/impresion-d-4.jpg"></div></center></div>
-
+			<form action="agregar_imprime_carrito.php" onsubmit="return validarForm();">
+			<input type="hidden" name="id-seccion" value="4">
 			<div class="col-xs-12 col-sm-6 col-md-6"><div class="show"><br><br><br><br></div>
 				<div class="contenedor-especificaciones col-xs-12">
 					<label class="texto-especificaciones1">Escoge las especificaciones de tus productos</label>
@@ -215,10 +240,14 @@
 					<label class="texto-especificaciones">Lomo</label>
 					<label class="radio-inline"><input type="radio" id="lomo" name="lomo" value="1">Clásica sin lomo</label>
 					<label class="radio-inline"><input type="radio" id="lomo1" name="lomo" value="2">Clásica con lomo (4mm)</label>
+					<input type="hidden" name="caracNombre1" value="Lomo">
+					<input type="hidden" name="caracValor1" id="lomo_v">
 
 					<label class="texto-especificaciones"><br>Caras</label>
 					<label class="radio-inline"><input type="radio" id="caras" name="caras" value="1">Una cara / 4x0</label>
 					<label class="radio-inline"><input type="radio" id="caras1" name="caras" value="2">Dos caras / 4x4</label>
+					<input type="hidden" name="caracNombre2" value="Caras">
+					<input type="hidden" name="caracValor2" id="caras_v">
 
 					<label class="texto-especificaciones"><br>Material</label>
 					<label class="radio-inline"><input type="radio" id="material" name="material" value="1">Propalcote 300gr</label>
@@ -227,10 +256,14 @@
 					<div class="radio">
 						<label class="radio-inline"><input type="radio" id="material3" name="material" value="4">Propalcote 150gr</label>
 					</div>
+					<input type="hidden" name="caracNombre3" value="Material">
+					<input type="hidden" name="caracValor3" id="material_v">
 					
 					<label class="texto-especificaciones"><br>Pastificado</label>
 					<label class="radio-inline"><input type="radio" id="plastificado1" name="plastificado" value="1">Mate</label>
 					<label class="radio-inline"><input type="radio" id="plastificado2" name="plastificado" value="2">Brillante</label>
+					<input type="hidden" name="caracNombre4" value="Pastificado">
+					<input type="hidden" name="caracValor4" id="plastificado_v">
 					
 					<label class="texto-especificaciones"><br>Acabado</label>
 					<div class="radio">
@@ -241,14 +274,14 @@
 						<label class="radio-inline"><input type="radio" id="acabado3" name="acabado" value="3">Brillo UV parcial</label>
 						<label class="radio-inline"><input type="radio" id="acabado4" name="acabado" value="4">Troquelado</label>
 					</div>
+					<input type="hidden" name="caracNombre5" value="Acabado">
+					<input type="hidden" name="caracValor5" id="acabado_v">
 					<hr>
 				</div>
 			</div>	
 			<div class=" col-xs-12 col-sm-3 col-md-3">
 				<center>
-					<form>
 					<br>
-
 						<table class="table table-striped tabla">
 							<tr>
 								<td>
@@ -300,6 +333,7 @@
 							</tr>
 						</table>
 						<input type="submit" class="btn boton" name="" value="Subir Diseño">
+						<input type="hidden" name="total" id="total-field" value="0">
 					</form>
 					<p>Adjunta tu diseño antes de finalizar la <br> compra. <a href="" style="color: black;"><b>indicaciones aqui.</b></a></p>
 					<div class="texto-total">

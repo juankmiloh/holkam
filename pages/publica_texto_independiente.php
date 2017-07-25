@@ -8,20 +8,74 @@
 	<link rel="stylesheet" type="text/css" href="../css/estilos-publicatexto.css">
 	<link rel="stylesheet" type="text/css" href="../css/estilos-barra-header.css">
 	<link rel="stylesheet" type="text/css" href="../css/estilos-footer.css">
+	<link rel="stylesheet" type="text/css" href="../css/fileinput.min.css">
 
 
 	<script src="../js/jquery.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/fileinput.min.js"></script>
 
+	<script src="../js/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="../css/sweetalert2.min.css">
 	
 	<link rel="stylesheet" href="../dist/css/bootstrap-submenu.min.css">
 	<script src="../js/funsubmenu.js"></script>
 	<script src="../dist/js/bootstrap-submenu.min.js" defer></script>
 	<script src="../javascript/script_btn_login.js"></script>
+
+	<script src="../javascript/script_publica_texto.js"></script>
 	
 </head>
-<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false"> 
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+<?php
+	/*=============================================
+	* SE VERIFICA QUE EXISTA LA VARIABLE correo_eviado Y SI SU VALOR ESTA EN SI SE MUESTRA UNA ALERTA DE EXITO
+	*==============================================*/
+	if (isset($_GET['correo_enviado'])) {
+		$correo_enviado = $_GET['correo_enviado'];
+		if ($correo_enviado == "si") {
+			echo "<script language='javascript'>"; 
+			echo "swal({
+			        title: 'BUEN TRABAJO!',
+			        type: 'success',
+			        html: 'Publicación enviada con éxito.',
+			        showCloseButton: false,
+			        showCancelButton: false,
+			        allowOutsideClick: false
+			      }).then(function () {
+				  	window.location = './publica_texto_independiente.php';
+				  });;";
+			echo "</script>";
+		}
+	}
+?>
+<a name="arriba"></a> <!--ESTO ES PARA CUANDO SE ESTE ENVIANDO EL CORREO, SE DEVUELVA A LA PARTE DE ARRIBA DE LA PAGINA-->
+<!-- DIV's de imagen de carga oculto -->
+<div class="fbback"></div>
 
+<div class="container" id="fbdrag1">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="fb">
+                <!--<span class="close" onclick="dragClose('fbdrag1')"></span>-->
+                <div class="dheader">HOLKAM / PUBLICA</div>
+                <div class="dcontent">
+                    <div style="text-align:center;padding-top:20px">
+                        <center>
+                            <img src="../images/loading.gif" alt="Loading...">
+                            <br><br>
+                            <label id="texto_carga" style="color: black;"></label>
+                        </center>
+                    </div>
+                    <br>
+                    <!--<div style="padding-top:15px;text-align:center">
+                        <span class="buttonx" onclick="dragClose('fbdrag1')">Close</span>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container-fluid cuerpo">
 	<header>
@@ -100,61 +154,62 @@
 		</div>
 	</div>
 	
-	
-	<div class="container-fluid texto-head-form">
-		<center>
-			<p style="">Este formulario nos permitirá establecer el avance de su publicación. <br> Marca de manera honesta y precisa las opciones</p>
-		</center>	
-	</div>
-	<br>
-	<center>
-		<div class="container">
-			<div class="row cont check-opcion">
-				<table>
-					<tr>
-						<td><input type="checkbox" name=""></td>
-						<td> &nbsp;&nbsp; <span class="texto-head-form">Mi publicación tiene corrección de estilo</span></td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name=""></td>
-						<td> &nbsp;&nbsp; <span class="texto-head-form">Mi publicación no tiene corrección de estilo</span></td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name=""></td>
-						<td> &nbsp;&nbsp; <span class="texto-head-form">Mi publicación ya está diagramada</span></td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name=""></td>
-						<td> &nbsp;&nbsp; <span class="texto-head-form">Mi publicación no está diagramada</span></td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" name=""></td>
-						<td> &nbsp;&nbsp; <span class="texto-head-form">Solo tengo el texto</span></td>
-					</tr>
-				</table><br>	
-			</div>
-			<br>
-			<div class="row cont check-opcion">
-				<div class="col-xs-6 col-sm-6"><input type="text" class="form-control" name="" placeholder="Adjunta tu texto"></div>
-				<div class="col-xs-6 col-sm-6">
-					<button class="btn">Examinar..</button>
-				</div>&nbsp;<br>
-			</div>
-			<br>
-			<div class="row cont">
-				<div class="col-xs-12">
-					<span class="texto-head-form">
-					Déjanos tu correo, y así podremos enviarte una cotización detallada <br>lo más pronto posible<br>&nbsp;
-					</span>
-					<input type="text" class="form-control" placeholder="Tu Correo" name="" style="background-color: #E1DDDD;"><br>
-				</div>
-				<div class="col-xs-7 col-sm-8 col-md-9"></div>
-				<div class="col-xs-5 col-sm-4 col-md-3"><input type="button" class="btn" name="" value="Enviar" onclick="alert('boton en Tony prueba');"><br>&nbsp;</div>
-				
-				
-			</div>
+	<form id="formulario" method="post" action="./publicar_texto.php" enctype="multipart/form-data">
+		<div class="container-fluid texto-head-form">
+			<center>
+				<p style="">Este formulario nos permitirá establecer el avance de su publicación. <br> Marca de manera honesta y precisa las opciones</p>
+			</center>	
 		</div>
-   </center>
+		<br>
+		<center>
+			<div class="container">
+				<div class="row cont check-opcion">
+					<table>
+						<tr>
+							<td><input type="checkbox" id="numero_check_1" name="numero_check[]" value="1">&nbsp;&nbsp;<span class="texto-head-form">Mi publicación tiene corrección de estilo</span></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="numero_check_2" name="numero_check[]" value="2">&nbsp;&nbsp;<span class="texto-head-form">Mi publicación no tiene corrección de estilo</span></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="numero_check_3" name="numero_check[]" value="3">&nbsp;&nbsp;<span class="texto-head-form">Mi publicación ya está diagramada</span></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="numero_check_4" name="numero_check[]" value="4">&nbsp;&nbsp;<span class="texto-head-form">Mi publicación no está diagramada</span></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="numero_check_5" name="numero_check[]" value="5">&nbsp;&nbsp;<span class="texto-head-form">Solo tengo el texto</span></td>
+						</tr>
+					</table><br>	
+				</div>
+				<br>
+				<div class="row cont check-opcion">
+					<div class="col-xs-6 col-sm-6"><input type="text" class="form-control" name="nombre_texto" placeholder="Adjunta tu texto" required></div>
+					<div class="col-xs-6 col-sm-6">
+					<input id="input_adjuntar_archivo" name="archivo_adjunto" type="file" class="file-loading" required>
+					</div>&nbsp;<br>
+				</div>
+				<br>
+				<div class="row cont">
+					<div class="col-xs-12">
+						<span class="texto-head-form">
+						Déjanos tu correo, y así podremos enviarte una cotización detallada <br>lo más pronto posible<br>&nbsp;
+						</span>
+						<input type="email" class="form-control" placeholder="Tu Correo" name="correo_cliente" style="background-color: #E1DDDD;" required><br>
+					</div>
+					<div class="col-xs-7 col-sm-8 col-md-9"></div>
+					<div class="col-xs-5 col-sm-4 col-md-3">
+						<button type="submit" id="boton_enviar" class="btn btn-default">
+	                        <span>Enviar</span>
+	                        <span class="glyphicon glyphicon-send"></span>
+	                    </button>
+					</div>
+				</div>
+			</div>
+	   	</center>
+	   	<br><br><br>
+	</form>
+	
    <footer class="pie">
    <br>
    	
