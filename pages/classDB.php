@@ -20,7 +20,7 @@ class database{
         // para trabajar local juankmilo
         $hostname = "localhost";
         $username = "root";
-        $password = "root";
+        $password = "";
         $database = "holkam_bd";
 
         // Para trabajar en el servidor co.nf

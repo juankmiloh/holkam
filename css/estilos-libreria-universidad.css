@@ -447,11 +447,7 @@ body{
 * OPCIONES PARA EL CONTENDEOR DETALLE LIBRO - [PANTALLAS GRANDES]
 *==============================================*/
 .div_libro_detalle{
-	text-align: center;
-}
-
-.div_valores_libro_detalle{
-
+	/*text-align: center;*/
 }
 
 .titulo_libro_detalle{
@@ -595,6 +591,10 @@ body{
 
 	.div_libro_xs {
 	    right: 330;
+	}
+
+	.div_libro_detalle{
+		text-align: center;
 	}
 
 	/*=============================================

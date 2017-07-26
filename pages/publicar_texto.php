@@ -3,7 +3,7 @@
 	header("Content-Type: text/html; charset=iso-8859-1");
 	ob_start(); //Linea para permitir enviar flujo de datos por url al redireccionar la pagina 
 	include("./email/phpmailer.php");
-	error_reporting(0); // Desactivar toda notificación de error
+	// error_reporting(0); // Desactivar toda notificación de error
 
 	//print_r($_FILES["archivo_adjunto"]);
 	$nombre_archivo = $_FILES["archivo_adjunto"]["name"];
