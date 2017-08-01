@@ -15,7 +15,7 @@
 	/*
 	* conexion con la base de datos local
 	*/
-    $con = mysqli_connect("localhost","root","","holkam_bd");
+    $con = mysqli_connect("localhost","root","root","holkam_bd");
     // Check connection
     mysqli_query($con, "SET NAMES 'UTF8'");
     if (mysqli_connect_error())
