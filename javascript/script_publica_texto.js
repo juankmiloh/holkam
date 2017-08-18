@@ -29,16 +29,16 @@ function bloquear_form() {
       }
       if (bandera == 0) {
         swal({
-      title: 'ERROR!',
-      type: 'error',
-      html: 'Debe seleccionar el avance de su publicación.',
-      showCloseButton: false,
-      showCancelButton: false,
-      confirmButtonText: '<i class="fa fa-thumbs-up"></i> oK',
-      allowOutsideClick: false
-    }).then(function () {
-      $('#numero_check_1').focus();
-    });
+          title: 'ERROR!',
+          type: 'error',
+          html: 'Debe seleccionar el avance de su publicación.',
+          showCloseButton: false,
+          showCancelButton: false,
+          confirmButtonText: '<i class="fa fa-thumbs-up"></i> oK',
+          allowOutsideClick: false
+        }).then(function () {
+          $('#numero_check_1').focus();
+        });
       return false; //BLOQUEA EL FORM
     }else{
       location.href = "#arriba";
